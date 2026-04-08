@@ -1,0 +1,26 @@
+{
+  "auth": {
+    "login_title": "Admin Login",
+    "register_title": "Create Restaurant",
+    "email_label": "Account Email",
+    "password_label": "Password",
+    "button_login": "Sign In",
+    "button_register": "Register",
+    "loading": "Entering...",
+    "forgot_password": "Forgot password?"
+  },
+  "dashboard": {
+    "stats_items": "Items",
+    "stats_categories": "Categories",
+    "stats_likes": "Likes",
+    "quick_actions": "Quick Actions",
+    "payment": "Payment"
+  },
+  "registration": {
+    "step_1": "Account",
+    "step_2": "Branding",
+    "step_3": "Languages",
+    "step_4": "Contacts",
+    "finish_button": "Complete Setup"
+  }
+}

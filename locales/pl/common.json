@@ -1,0 +1,26 @@
+{
+  "auth": {
+    "login_title": "Logowanie",
+    "register_title": "Utwórz restaurację",
+    "email_label": "Email konta",
+    "password_label": "Hasło",
+    "button_login": "Zaloguj się",
+    "button_register": "Zarejestruj się",
+    "loading": "Enter...",
+    "forgot_password": "Forgot password?"
+  },
+  "dashboard": {
+    "stats_items": "Dania",
+    "stats_categories": "Kategorie",
+    "stats_likes": "Polubienia",
+    "quick_actions": "Szybkie działania",
+    "payment": "Payment"
+  },
+  "registration": {
+    "step_1": "Konto",
+    "step_2": "Branding",
+    "step_3": "Języki",
+    "step_4": "Kontakty",
+    "finish_button": "Zakończ konfigurację"
+  }
+}

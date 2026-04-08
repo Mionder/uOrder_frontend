@@ -1,0 +1,86 @@
+{
+  "auth": {
+    "login_title": "Вхід в панель",
+    "register_title": "Створення закладу",
+    "email_label": "Email аккаунта",
+    "password_label": "Пароль",
+    "button_login": "Увійти",
+    "button_register": "Зареєструватися",
+    "loading": "Вхід...",
+    "forgot_password": "Забули пароль?"
+  },
+  "dashboard": {
+    "stats_items": "Страви",
+    "stats_categories": "Категорії",
+    "stats_likes": "Вподобання",
+    "edit_menu": "Редагувати меню",
+    "edit_caterories": "Керувати розділами",
+    "likes_desc": "Від реальних гостей",
+    "profile_settings": "Налаштування профілю",
+    "profile_settings_desc": "Налаштуйте кольори, логотип та контакти",
+    "quick_actions": "Швидкі дії",
+    "dashboard": "Дашборд",
+    "dashboard_subtitle": "Керування вашим рестораном у реальному часі",
+    "menu": "Меню",
+    "profile": "Профіль",
+    "logout": "Вийти",
+    "payment": "Оплата",
+    "menu_views": "Перегляди меню"
+  },
+  "registration": {
+    "step_1": "Аккаунт",
+    "step_2": "Брендинг",
+    "step_3": "Мови",
+    "step_4": "Контакти",
+    "finish_button": "Завершити налаштування"
+  },
+  "not_found": {
+    "title": "Заклад не знайдено",
+    "subtitle": "Схоже, це посилання застаріло або сторінку було видалено.",
+    "back_button": "На головну"
+  },
+  "public_menu_error": {
+    "title": "Меню тимчасово недоступне",
+    "subtitle": "Ми вже знаємо про проблему та виправляємо її. Будь ласка, спробуйте оновити сторінку за мить.",
+    "update": "Оновити меню"
+  },
+  "menu_item": {
+    "from": "від"
+  },
+  "billing": {
+    "back_button": "Назад",
+    "title": "Керування підпискою",
+    "subtitle": "Масштабуйте ваш бізнес разом з",
+    "current_plan": "Поточний план",
+    "system_status": "Статус системи",
+    "status_active": "Активний",
+    "month": "Місяць",
+    "year": "Рік",
+    "security": "Платежі захищені шифруванням AES-256",
+    "select_plan": "Обрати план",
+    "best_choice": "Найкращий вибір"
+  },
+  "dashboard_error": {
+    "title": "Не вдалося завантажити статистику",
+    "subtitle": "Сервер тимчасово недоступний",
+    "reload": "Оновити дані"
+  },
+  "loading": "Завантаження",
+  "categories_page": {
+    "title": "Категорії меню",
+    "subtitle": "Керуйте розділами вашого закладу",
+    "add_button": "Додати категорію",
+    "close": "Закрити",
+    "create_title": "Створення нової категорії",
+    "empty_state": "Категорій поки немає",
+    "delete": "Видалити",
+    "create_form": {
+        "name": "Назва",
+        "placeholder_name": "Наприклад: Холодні напої",
+        "slug": "Шлях (Slug)",
+        "placeholder_slug": "наприклад-холодні-напої",
+        "save": "Збереження...",
+        "create_button": "Створити категорію"
+    }
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "en": {
+    "hero": {
+      "title": "Digital Menu for Your Restaurant",
+      "subtitle": "Modern solution for the Horeca industry. Increase sales and improve service with",
+      "button_try": "Try for free",
+      "button_demo": "Watch demo"
+    },
+    "features": {
+      "title": "Why Choose Us?",
+      "items": [
+        { "title": "Quick Update", "desc": "Change prices and dishes in real-time." },
+        { "title": "QR Access", "desc": "Guests scan and order without waiting." },
+        { "title": "Multilingual", "desc": "Menu in English, Ukrainian, and Polish." }
+      ]
+    },
+    "pricing": {
+      "title": "Plans & Pricing",
+      "monthly": "Monthly",
+      "yearly": "Yearly",
+      "save": "Save 20%",
+      "currency": "$",
+      "plans": {
+        "free": { "name": "Free", "price": 0, "features": ["10 dishes", "QR code", "Basic theme"] },
+        "base": { "name": "Base", "price": 15, "features": ["Unlimited dishes", "Analytics", "Custom colors", "Support"] },
+        "pro": { "name": "Pro", "price": 30, "features": ["Multiple locations", "Staff management", "Priority support", "AI descriptions"] }
+      }
+    },
+    "reviews": {
+      "title": "Trusted by Restaurants",
+      "items": [
+        { "name": "Steak House", "text": "Our sales increased by 15% after switching to uOrder.", "author": "John D." }
+      ]
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "items": [
+        { "q": "How long does it take to set up?", "a": "You can create your first menu in less than 10 minutes." },
+        { "q": "Do I need special hardware?", "a": "No, any smartphone or tablet with a browser will work." }
+      ]
+    },
+    "footer": {
+        "slogan": "Digitizing your business in just a few clicks.",
+        "contacts": "Contacts",
+        "location": "Location",
+        "location_value": "Kyiv, Ukraine"
+    }
+  },
+  "uk": {
+    "hero": {
+      "title": "Цифрове меню для вашого ресторану",
+      "subtitle": "Сучасне рішення для HoReCa. Збільшуйте продажі та покращуйте сервіс за допомогою",
+      "button_try": "Спробувати безкоштовно",
+      "button_demo": "Дивитись демо"
+    },
+    "features": {
+      "title": "Чому саме ми?",
+      "items": [
+        { "title": "Швидке оновлення", "desc": "Змінюйте ціни та страви в реальному часі." },
+        { "title": "QR доступ", "desc": "Гість сканує та замовляє без очікування." },
+        { "title": "Мультимовність", "desc": "Меню англійською, українською та польською." }
+      ]
+    },
+    "pricing": {
+      "title": "Тарифи та підписки",
+      "monthly": "Місяць",
+      "yearly": "Рік",
+      "save": "Економія 20%",
+      "currency": "₴",
+      "plans": {
+        "free": { "name": "Free", "price": 0, "features": ["10 страв", "QR код", "Базова тема"] },
+        "base": { "name": "Base", "price": 500, "features": ["Безліміт страв", "Аналітика", "Власні кольори", "Підтримка"] },
+        "pro": { "name": "Pro", "price": 1000, "features": ["Кілька закладів", "Керування персоналом", "Пріоритет", "AI описи"] }
+      }
+    },
+    "reviews": {
+      "title": "Нам довіряють",
+      "items": [
+        { "name": "М'ясний Двір", "text": "Продажі зросли на 15% після переходу на uOrder.", "author": "Олександр В." }
+      ]
+    },
+    "faqs": {
+      "title": "Часті запитання",
+      "items": [
+        { "q": "Скільки часу займає налаштування?", "a": "Ви можете створити своє перше меню менш ніж за 10 хвилин." },
+        { "q": "Чи потрібне спеціальне обладнання?", "a": "Ні, підійде будь-який смартфон або планшет з браузером." }
+      ]
+    },
+    "footer": {
+        "slogan": "Цифровізація вашого бізнесу за кілька кліків.",
+        "contacts": "Контакти",
+        "location": "Локація",
+        "location_value": "Київ, Україна"
+    }
+  },
+  "pl": {
+  "hero": {
+    "title": "Cyfrowe menu dla Twojej restauracji",
+    "subtitle": "Nowoczesne rozwiązanie dla branży HoReCa. Zwiększ sprzedaż i popraw obsługę dzięki",
+    "button_try": "Wypróbuj za darmo",
+    "button_demo": "Zobacz demo"
+  },
+  "features": {
+    "title": "Dlaczego właśnie my?",
+    "items": [
+      { "title": "Szybka aktualizacja", "desc": "Zmieniaj ceny i dania w czasie rzeczywistym." },
+      { "title": "Dostęp przez QR", "desc": "Gość skanuje i zamawia bez oczekiwania." },
+      { "title": "Wielojęzyczność", "desc": "Menu w języku angielskim, ukraińskim i polskim." }
+    ]
+  },
+  "pricing": {
+    "title": "Plany i subskrypcje",
+    "monthly": "Miesiąc",
+    "yearly": "Rok",
+    "save": "Oszczędź 20%",
+    "currency": "₴",
+    "plans": {
+      "free": { "name": "Free", "price": 0, "features": ["10 dań", "Kod QR", "Podstawowy motyw"] },
+      "base": { "name": "Base", "price": 500, "features": ["Nielimitowana liczba dań", "Analityka", "Własne kolory", "Wsparcie"] },
+      "pro": { "name": "Pro", "price": 1000, "features": ["Wiele lokali", "Zarządzanie personelem", "Priorytetowe wsparcie", "Opisy AI"] }
+    }
+  },
+  "reviews": {
+    "title": "Zaufali nam",
+    "items": [
+      { "name": "Mięsny Dwór", "text": "Sprzedaż wzrosła o 15% po przejściu na uOrder.", "author": "Oleksandr W." }
+    ]
+  },
+  "faqs": {
+    "title": "Najczęściej zadawane pytania",
+    "items": [
+      { "q": "Ile czasu zajmuje konfiguracja?", "a": "Możesz stworzyć swoje pierwsze menu w mniej niż 10 minut." },
+      { "q": "Czy potrzebny jest specjalny sprzęt?", "a": "Nie, wystarczy dowolny smartfon lub tablet z przeglądarką." }
+    ]
+  },
+  "footer": {
+    "slogan": "Cyfryzacja Twojego biznesu w kilku kliknięciach.",
+    "contacts": "Kontakt",
+    "location": "Lokalizacja",
+    "location_value": "Kijów, Ukraina"
+  }
+}
+}
