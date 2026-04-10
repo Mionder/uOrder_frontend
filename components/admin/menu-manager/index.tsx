@@ -18,8 +18,8 @@ const reorder = (list: any[], startIndex: number, endIndex: number) => {
   return result;
 };
 
-export const MenuManager = ({ initialData, token, setShowCreateModal, slug }: { initialData: Category[], token: string, setShowCreateModal: any, slug: any }) => {
-  const { t } = useLanguage();
+export const MenuManager = ({ initialData, token, setShowCreateModal, slug, setTab }: { initialData: Category[], token: string, setShowCreateModal: any, slug: any, setTab: any }) => {
+  const { t, tr } = useLanguage();
   const [categories, setCategories] = useState<Category[]>(initialData);
   const [selectedItem, setSelectedItem] = useState<any>(null);
 
@@ -122,8 +122,6 @@ const onDragEnd = async (result: DropResult) => {
 
 const onSave = async (id: string, data: any) => {
     try {
-
-        console.log('try_to_fetch_patch');
         const response = await fetch(`http://localhost:3000/v1/admin/menu/${id}`, {
         method: 'PATCH',
         headers: {
@@ -149,17 +147,34 @@ const onSave = async (id: string, data: any) => {
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-10">
           <div>
-            <h1 className="text-3xl font-black italic tracking-tighter uppercase">Керування меню</h1>
-            <p className="text-gray-400 text-sm font-medium mt-1">Створюйте категорії та додавайте страви</p>
+            <h1 className="text-3xl font-black italic tracking-tighter uppercase">{tr('menu_page.title')}</h1>
+            <p className="text-gray-400 text-sm font-medium mt-1">{tr('menu_page.subtitle')}</p>
           </div>
-          <button 
-            onClick={() => setShowCreateModal(true)} 
-            className="w-full sm:w-auto flex items-center justify-center gap-2 bg-black text-white px-6 py-3 rounded-2xl hover:bg-gray-800 transition shadow-lg active:scale-95"
-          >
-            <PlusCircle size={20} />
-            <span className="text-xs font-black uppercase tracking-widest">Додати страву</span>
-          </button>
+          {
+            categories.length > 0 && (
+            <button 
+              onClick={() => setShowCreateModal(true)} 
+              className="w-full sm:w-auto flex items-center justify-center gap-2 bg-black text-white px-6 py-3 rounded-2xl hover:bg-gray-800 transition shadow-lg active:scale-95"
+            >
+              <PlusCircle size={20} />
+              <span className="text-xs font-black uppercase tracking-widest">{tr('menu_page.add_btn')}</span>
+            </button>
+            )
+          }
+          
         </div>
+        {
+          categories.length === 0 && (
+            <div>
+              <p className="text-gray-600 font-medium mb-4">{tr('empty_categories')}</p>
+              <button onClick={() => setTab(1)} className="w-full sm:w-auto flex items-center justify-center gap-2 bg-black text-white px-6 py-3 rounded-2xl hover:bg-gray-800 transition shadow-lg active:scale-95">
+                <span className="text-xs font-black uppercase tracking-widest">
+                {tr('go_to_categories')}
+                </span>
+                </button>
+            </div>
+          )
+        }
 
         <DragDropContext onDragEnd={onDragEnd}>
           <div className="space-y-8">
@@ -201,7 +216,7 @@ const onSave = async (id: string, data: any) => {
       {/* Форма редагування: Виїжджає збоку */}
       {selectedItem && (
         <div className="fixed inset-0 z-[1000] flex justify-end bg-black/40 backdrop-blur-sm">
-          <div className="w-full sm:w-[540px] h-full bg-white shadow-2xl animate-in slide-in-from-right duration-300 overflow-y-auto">
+          <div className="w-full sm:w-[450px] h-full bg-white shadow-2xl animate-in slide-in-from-right duration-300 overflow-y-auto">
             <EditMenuItemForm 
               item={selectedItem} 
               onClose={() => setSelectedItem(null)} 

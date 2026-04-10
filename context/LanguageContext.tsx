@@ -19,7 +19,7 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: React.ReactNode }) => {
-  const [language, setLanguage] = useState<string>('uk');
+  const [language, setLanguage] = useState<string>('en');
   const { token } = useAuth();
   const [profileLanguages, setProfileLanguages] = useState<any>([]);
 
@@ -49,7 +49,7 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
   // Хелпер для мультиязичних полів з бази (Json)
   const t = (data: any) => {
     if (!data) return '';
-    return data[language] || data['uk'] || '';
+    return data[language] || data['en'] || '';
   };
 
   return (

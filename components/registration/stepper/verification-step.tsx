@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Mail, ArrowRight, RefreshCcw, CheckCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useLanguage } from "@/context/LanguageContext";
 
 export const VerificationStep = ({ email, token }: { email: string, token: string }) => {
     const [code, setCode] = useState(['', '', '', '', '', '']);
@@ -10,6 +11,7 @@ export const VerificationStep = ({ email, token }: { email: string, token: strin
     const [resendTimer, setResendTimer] = useState(60);
     const inputs = useRef<(HTMLInputElement | null)[]>([]);
     const router = useRouter();
+    const { tr } = useLanguage();
 
     useEffect(() => {
         if (resendTimer > 0) {
@@ -83,9 +85,9 @@ export const VerificationStep = ({ email, token }: { email: string, token: strin
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-50 text-blue-600 mb-2">
                     <Mail size={32} />
                 </div>
-                <h2 className="text-2xl font-black text-gray-900">Підтвердіть вашу пошту</h2>
+                <h2 className="text-2xl font-black text-gray-900">{tr('registration_page.email_step.title')}</h2>
                 <p className="text-gray-500 text-sm px-8">
-                    Ми надіслали 6-значний код на <span className="font-bold text-gray-900">{email}</span>
+                    {tr('registration_page.email_step.subtitle')} <span className="font-bold text-gray-900">{email}</span>
                 </p>
             </div>
 
@@ -93,7 +95,7 @@ export const VerificationStep = ({ email, token }: { email: string, token: strin
                 {code.map((digit, idx) => (
                     <input
                         key={idx}
-                        ref={(el) => (inputs.current[idx] = el)}
+                        ref={(el: any) => (inputs.current[idx] = el)}
                         type="text"
                         inputMode="numeric"
                         value={digit}
@@ -110,7 +112,7 @@ export const VerificationStep = ({ email, token }: { email: string, token: strin
                     disabled={loading || code.some(d => !d)}
                     className="w-full bg-gray-900 hover:bg-black text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 transition-all shadow-xl shadow-gray-200 disabled:opacity-50"
                 >
-                    {loading ? "Перевірка..." : "Підтвердити"}
+                    {loading ? tr('registration_page.email_step.confirm_loading') : tr('registration_page.email_step.confirm')}
                 </button>
 
                 <div className="flex flex-col items-center gap-3">
@@ -120,14 +122,14 @@ export const VerificationStep = ({ email, token }: { email: string, token: strin
                         className="text-sm font-bold text-blue-600 disabled:text-gray-400 flex items-center gap-2"
                     >
                         <RefreshCcw size={14} className={resendTimer > 0 ? "" : "animate-spin-slow"} />
-                        Надіслати код повторно {resendTimer > 0 && `(${resendTimer}с)`}
+                        {tr('registration_page.email_step.resend')} {resendTimer > 0 && `(${resendTimer}с)`}
                     </button>
                     
                     <button 
                         onClick={() => router.push('/admin/dashboard')}
                         className="text-sm font-medium text-gray-400 hover:text-gray-600 transition-colors"
                     >
-                        Я зроблю це пізніше в профілі
+                        {tr('registration_page.email_step.skip')}
                     </button>
                 </div>
             </div>

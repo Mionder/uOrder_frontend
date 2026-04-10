@@ -1,20 +1,32 @@
 {
   "auth": {
-    "login_title": "Admin Login",
-    "register_title": "Create Restaurant",
+    "login_title": "Panel Login",
+    "register_title": "Create Establishment",
     "email_label": "Account Email",
     "password_label": "Password",
-    "button_login": "Sign In",
+    "button_login": "Login",
     "button_register": "Register",
-    "loading": "Entering...",
+    "loading": "Logging in...",
     "forgot_password": "Forgot password?"
   },
   "dashboard": {
-    "stats_items": "Items",
+    "stats_items": "Dishes",
     "stats_categories": "Categories",
     "stats_likes": "Likes",
+    "edit_menu": "Edit Menu",
+    "edit_caterories": "Manage Sections",
+    "likes_desc": "From real guests",
+    "view_link": "Link to your menu",
+    "profile_settings": "Profile Settings",
+    "profile_settings_desc": "Configure colors, logo, and contacts",
     "quick_actions": "Quick Actions",
-    "payment": "Payment"
+    "dashboard": "Dashboard",
+    "dashboard_subtitle": "Real-time restaurant management",
+    "menu": "Menu",
+    "profile": "Profile",
+    "logout": "Logout",
+    "payment": "Payment",
+    "menu_views": "Menu Views"
   },
   "registration": {
     "step_1": "Account",
@@ -22,5 +34,190 @@
     "step_3": "Languages",
     "step_4": "Contacts",
     "finish_button": "Complete Setup"
-  }
+  },
+  "not_found": {
+    "title": "Establishment Not Found",
+    "subtitle": "It seems this link is outdated or the page has been deleted.",
+    "back_button": "To Homepage"
+  },
+  "public_menu_error": {
+    "title": "Menu Temporarily Unavailable",
+    "subtitle": "We are aware of the issue and are fixing it. Please try refreshing the page in a moment.",
+    "update": "Refresh Menu"
+  },
+  "menu_item": {
+    "from": "from"
+  },
+  "billing": {
+    "back_button": "Back",
+    "title": "Subscription Management",
+    "subtitle": "Scale your business with",
+    "current_plan": "Current Plan",
+    "system_status": "System Status",
+    "status_active": "Active",
+    "month": "Month",
+    "year": "Year",
+    "security": "Payments secured with AES-256 encryption",
+    "select_plan": "Select Plan",
+    "best_choice": "Best Choice"
+  },
+  "dashboard_error": {
+    "title": "Failed to load statistics",
+    "subtitle": "Server is temporarily unavailable",
+    "reload": "Refresh Data"
+  },
+  "loading": "Loading",
+  "categories_page": {
+    "title": "Menu Categories",
+    "subtitle": "Manage sections of your establishment",
+    "add_button": "Add Category",
+    "close": "Close",
+    "create_title": "Create New Category",
+    "empty_state": "No categories yet",
+    "delete": "Delete",
+    "create_form": {
+      "name": "Name",
+      "placeholder_name": "e.g., Cold Drinks",
+      "slug": "Path (Slug)",
+      "placeholder_slug": "cold-drinks-example",
+      "save": "Saving...",
+      "create_button": "Create Category"
+    }
+  },
+  "menu_page": {
+    "title": "Menu Management",
+    "subtitle": "Create categories and add dishes",
+    "add_btn": "Add Dish",
+    "edit_form": {
+      "title": "Edit Dish",
+      "available": "Dish available in menu",
+      "variant_label": "Use variants (size/weight)",
+      "stable_price_label": "Standard Price (UAH)",
+      "weight_label": "Weight / Volume",
+      "variants_list": "Variants List",
+      "add_btn": "Add",
+      "name_placeholder": "Name",
+      "price_placeholder": "Price",
+      "item_name": "Dish Name",
+      "item_description": "Description",
+      "item_categories": "Category",
+      "spiciness": "Spiciness",
+      "alergens": "Allergens",
+      "save": "Save Changes",
+      "save_loading": "Saving...",
+      "delete": "Delete Dish"
+    },
+    "add_form": {
+      "title": "New Dish",
+      "variants_label": "This dish has variants (volume, size, etc.)",
+      "label": "Label",
+      "weight_placeholder": "e.g., 0.5L or XL",
+      "add_photo": "Click to add photo",
+      "cancel": "Cancel",
+      "variant_price": "Variant Price"
+    }
+  },
+  "tenant_settings": {
+    "title": "Establishment Settings",
+    "change_logo": "Change Logo",
+    "restaurant_name": "Establishment Name (UA)",
+    "personal_link": "Personal Link (Slug)",
+    "slug_helper": "This is the link guests will use to open your menu.",
+    "branding_title": "Branding & Contacts",
+    "color_label": "Main Brand Color",
+    "color_helper": "This color will be used for buttons and accents in the menu",
+    "description_label": "Description",
+    "phone_label": "Phone Number",
+    "address_placeholder": "Address",
+    "working_hours_placeholder": "Schedule",
+    "save": "Save Changes",
+    "save_loading": "Saving...",
+    "qr_generator": {
+      "title": "Menu QR Code",
+      "upload": "Download",
+      "generate": "Generating...",
+      "create_now": "Create Now",
+      "empty_state": "Your unique QR code hasn't been created yet"
+    }
+  },
+  "forgot_password": {
+    "title": "Forgot Password?",
+    "subtitle": "Enter your email, and we will send you a recovery code.",
+    "send": "Send Code",
+    "send_loading": "Sending..."
+  },
+  "reset_password": {
+    "network_error": "Server connection error",
+    "code_error": "Something went wrong. Check the code.",
+    "match_error": "Passwords do not match",
+    "length_error": "Enter the full code from the email",
+    "title": "Password Recovery",
+    "subtitle": "We sent a code to",
+    "email_code": "Email Code",
+    "submit_btn": "Change Password",
+    "submit_btn_loading": "Updating...",
+    "new_password": "New Password",
+    "confirm_password": "Confirm Password",
+    "loading_state": "Loading..."
+  },
+  "back": "Back",
+  "registration_page": {
+    "title": "Create Establishment",
+    "subtitle": "Follow 5 simple steps to launch your online menu",
+    "step_1": "Account",
+    "step_2": "Branding",
+    "step_3": "Languages",
+    "step_4": "Contacts",
+    "email": "Email",
+    "skip": "Skip this step",
+    "finish_button": "Complete Setup",
+    "auth_step": {
+      "name": "Establishment Name",
+      "name_placeholder": "Sushi Master",
+      "slug": "Slug (Link)",
+      "slug_placeholder": "sushi-master",
+      "email": "Account Email",
+      "password": "Password",
+      "submit_btn": "Create Account",
+      "submit_btn_loading": "Registering..."
+    },
+    "branding_step": {
+      "image_helper": "Click to upload establishment logo",
+      "color": "Brand Color",
+      "color_helper": "This color will be the main accent of your digital menu"
+    },
+    "continue": "Continue",
+    "saving": "Saving...",
+    "language_step": {
+      "title": "Which languages does your establishment support?"
+    },
+    "contacts_step": {
+      "title": "Contacts & Description",
+      "subtitle": "This information will be displayed in the 'About Us' section",
+      "phone": "Contact Phone",
+      "locale": "Localization:",
+      "address": "Address",
+      "description_first": "Description of your establishment",
+      "description_second": "a few words about the atmosphere or cuisine."
+    },
+    "email_step": {
+      "title": "Verify your email",
+      "subtitle": "We sent a 6-digit code to",
+      "confirm": "Confirm",
+      "confirm_loading": "Verifying...",
+      "resend": "Resend Code",
+      "skip": "I'll do this later in the profile"
+    }
+  },
+  "global_error_page": {
+    "title": "Oops, something went wrong",
+    "subtitle": "An unexpected error occurred. We are already working to fix it.",
+    "try_again": "Try Again",
+    "homepage": "Return to Homepage"
+  },
+  "empty_categories": "You haven't created any categories yet",
+  "go_to_categories": "Go to categories",
+  "navigate": "Navigate to",
+  "reg_link": "Don't have an account?",
+  "create_now": "Create it now"
 }

@@ -105,7 +105,7 @@ export const LoginForm = () => {
 
       <div className="text-center">
         <button type="button" className="text-sm text-gray-900">
-            Немає акаунту?<span onClick={() => router.push('/registration')} className="!text-blue-600 hover:underline"> Створіть його зараз</span> 
+            {tr('reg_link')}<span onClick={() => router.push('/registration')} className="!text-blue-600 hover:underline"> {tr('create_now')}</span> 
         </button>
       </div>
     </form>

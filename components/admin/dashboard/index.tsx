@@ -39,7 +39,7 @@ export const AdminDashboard = ({ categories, menuTree, token }: any) => {
     };
 
     const { setToken } = useAuth();
-    const { tr } = useLanguage();
+    const { tr, profileLanguages } = useLanguage();
 
     useEffect(() => {
         if (currentTab === 4) {
@@ -151,7 +151,7 @@ export const AdminDashboard = ({ categories, menuTree, token }: any) => {
                     </button>
                 </header>
 
-                <main className="flex-1 p-4 md:p-8 overflow-y-auto">
+                <main className={`flex-1 ${profileLanguages.length > 1 ? 'md:pt-0 md:p-8' : 'md:p-8'} p-4 overflow-y-auto`}>
                     <div className="max-w-6xl mx-auto">
                         {/* Header поточної сторінки */}
                         <div className="mb-6 md:mb-8">
@@ -168,7 +168,7 @@ export const AdminDashboard = ({ categories, menuTree, token }: any) => {
                                 <DashboardStatsView profile={profile} stats={stats} onNavigate={selectTab} />
                             )}
                             {currentTab === 1 && <CategoriesAdmin categories={categories} profile={profile} />}
-                            {currentTab === 2 && <MenuAdmin categories={categories} menuTree={menuTree} tenantSlug={profile.slug} />}
+                            {currentTab === 2 && <MenuAdmin categories={categories} menuTree={menuTree} tenantSlug={profile.slug} setTab={setCurrentTab} />}
                             {currentTab === 3 && <TenantSettingsForm profile={profile} token={token} logoPreview={logoPreview} />}
                         </div>
                     </div>

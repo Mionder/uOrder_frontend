@@ -56,7 +56,7 @@ const calculateYearlyPrice = (basePrice: number) => {
       </header>
       
 {/* HERO SECTION WITH GRAPHIC ELEMENTS */}
-      <section className="relative pt-44 pb-32 px-6 overflow-hidden">
+      <section className="relative pt-32 pb-32 px-6 overflow-hidden">
         {/* Background Decorations */}
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-50/50 rounded-full blur-[120px] -z-10" />
         <div className="absolute bottom-[10%] right-[-5%] w-[30%] h-[30%] bg-orange-50/50 rounded-full blur-[100px] -z-10" />

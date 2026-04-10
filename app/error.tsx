@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { RefreshCcw, Home } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function GlobalError({
   error,
@@ -10,6 +11,8 @@ export default function GlobalError({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  const { tr } = useLanguage();
+
   useEffect(() => {
     console.error('Global Error:', error);
   }, [error]);
@@ -20,9 +23,9 @@ export default function GlobalError({
         <div className="w-20 h-20 bg-red-50 text-red-600 rounded-[2rem] flex items-center justify-center mx-auto mb-8">
           <RefreshCcw size={40} />
         </div>
-        <h1 className="text-3xl font-black uppercase italic tracking-tighter mb-4">Ой, щось пішло не так</h1>
+        <h1 className="text-3xl font-black uppercase italic tracking-tighter mb-4">{tr('global_error_page.title')}</h1>
         <p className="text-gray-400 font-medium mb-10">
-          Сталася непередбачена помилка. Ми вже працюємо над її виправленням.
+          {tr('global_error_page.subtitle')}
         </p>
         
         <div className="flex flex-col gap-3">
@@ -30,13 +33,13 @@ export default function GlobalError({
             onClick={() => reset()}
             className="w-full py-4 bg-black text-white rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] transition-all active:scale-95 shadow-xl shadow-black/10"
           >
-            Спробувати ще раз
+            {tr('global_error_page.try_again')}
           </button>
           <button
             onClick={() => window.location.href = '/admin'}
             className="w-full py-4 bg-gray-100 text-gray-400 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] hover:text-black transition-all"
           >
-            Повернутися на головну
+            {tr('global_error_page.homepage')}
           </button>
         </div>
       </div>

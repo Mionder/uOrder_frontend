@@ -3,11 +3,14 @@
 import { useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Eye, EyeOff, CheckCircle2, AlertCircle } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
+import { Loader } from '@/components/admin/ui/loader';
 
 function ResetPasswordContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const email = searchParams.get('email') || '';
+  const { tr } = useLanguage();
 
   const [formData, setFormData] = useState({
     code: '',
@@ -25,12 +28,12 @@ function ResetPasswordContent() {
 
     // Валідація на клієнті
     if (formData.newPassword !== formData.confirmPassword) {
-      setError('Паролі не співпадають');
+      setError(tr('reset_password.match_error'));
       return;
     }
 
     if (formData.code.length < 6) {
-      setError('Введіть повний код з листа');
+      setError(tr('reset_password.length_error'));
       return;
     }
 
@@ -55,10 +58,10 @@ function ResetPasswordContent() {
         localStorage.setItem('token', data.access_token);
         router.push('/admin/dashboard');
       } else {
-        setError(data.message || 'Щось пішло не так. Перевірте код.');
+        setError(data.message || tr('reset_password.code_error'));
       }
     } catch (err) {
-      setError('Помилка зʼєднання з сервером');
+      setError(tr('reset_password.network_error'));
     } finally {
       setLoading(false);
     }
@@ -71,14 +74,14 @@ function ResetPasswordContent() {
           <div className="w-16 h-16 bg-black text-white rounded-2xl flex items-center justify-center mx-auto mb-4">
             <CheckCircle2 size={32} />
           </div>
-          <h1 className="text-2xl font-black tracking-tight">Відновлення пароля</h1>
-          <p className="text-sm text-gray-400 mt-2">Ми надіслали код на <b>{email}</b></p>
+          <h1 className="text-2xl font-black tracking-tight">{tr('reset_password.title')}</h1>
+          <p className="text-sm text-gray-400 mt-2">{tr('reset_password.subtitle')} <b>{email}</b></p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           {/* Код підтвердження */}
           <div className="space-y-1.5">
-            <label className="text-[10px] font-black uppercase text-gray-400 ml-1">Код з листа</label>
+            <label className="text-[10px] font-black uppercase text-gray-400 ml-1">{tr('reset_password.email_code')}</label>
             <input 
               type="text" 
               maxLength={6}
@@ -91,7 +94,7 @@ function ResetPasswordContent() {
 
           {/* Новий пароль */}
           <div className="space-y-1.5 relative">
-            <label className="text-[10px] font-black uppercase text-gray-400 ml-1">Новий пароль</label>
+            <label className="text-[10px] font-black uppercase text-gray-400 ml-1">{tr('reset_password.new_password')}</label>
             <input 
               type={showPassword ? "text" : "password"}
               placeholder="••••••••"
@@ -109,7 +112,7 @@ function ResetPasswordContent() {
 
           {/* Підтвердження */}
           <div className="space-y-1.5">
-            <label className="text-[10px] font-black uppercase text-gray-400 ml-1">Повторіть пароль</label>
+            <label className="text-[10px] font-black uppercase text-gray-400 ml-1">{tr('reset_password.confirm_password')}</label>
             <input 
               type="password"
               placeholder="••••••••"
@@ -129,7 +132,7 @@ function ResetPasswordContent() {
             disabled={loading}
             className="w-full bg-black text-white py-5 rounded-2xl font-black text-sm uppercase tracking-widest hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-black/10 disabled:opacity-50"
           >
-            {loading ? 'Оновлюємо...' : 'Змінити пароль'}
+            {loading ? tr('reset_password.submit_btn_loading') : tr('reset_password.submit_btn')}
           </button>
         </form>
       </div>
@@ -140,7 +143,7 @@ function ResetPasswordContent() {
 // Огортаємо в Suspense, бо використовуємо useSearchParams
 export default function ResetPasswordPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen flex items-center justify-center font-black">Завантаження...</div>}>
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center font-black"><Loader /></div>}>
       <ResetPasswordContent />
     </Suspense>
   );

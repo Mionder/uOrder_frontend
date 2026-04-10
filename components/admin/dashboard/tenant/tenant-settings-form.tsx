@@ -4,10 +4,11 @@ import { refreshMenu } from '@/actions';
 import QrGenerator from '@/components/qr-generator';
 import { useLanguage } from '@/context/LanguageContext';
 import React, { useState, useEffect } from 'react';
+import { Loader } from '../../ui/loader';
 
 export default function TenantSettingsForm({ loading, setLoading, fetching, setFetching, profile, setProfile, logoPreview, setLogoPreview, token }: any) {
   // 1. Завантажуємо поточні дані при стартi
-  const { profileLanguages, t } = useLanguage();
+  const { profileLanguages, t, tr } = useLanguage();
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     setLoading(true);
@@ -68,11 +69,11 @@ export default function TenantSettingsForm({ loading, setLoading, fetching, setF
       if (res.ok) {
         const updated = await res.json();
         setProfile(updated);
-        alert('Налаштування збережено!');
+       // alert('Налаштування збережено!');
         await refreshMenu(slugValue);
       } else {
         const err = await res.json();
-        alert(`Помилка: ${err.message || 'Не вдалося оновити'}`);
+       // alert(`Помилка: ${err.message || 'Не вдалося оновити'}`);
       }
     } catch (error) {
       alert('Помилка мережі');
@@ -83,14 +84,14 @@ export default function TenantSettingsForm({ loading, setLoading, fetching, setF
 
   if (fetching) {
     return (
-        <div className="p-10 text-center">Завантаження профілю...</div>
+        <div className="p-10 text-center"><Loader /></div>
     );
   };
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-gray-50 min-h-screen">
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded-xl shadow-sm space-y-6">
-        <h1 className="text-2xl font-bold text-gray-800">Налаштування закладу</h1>
+        <h1 className="text-2xl font-bold text-gray-800">{tr('tenant_settings.title')}</h1>
         
         {/* Секція Логотипа */}
         <div className="flex items-center space-x-6 pb-6 border-b">
@@ -102,7 +103,7 @@ export default function TenantSettingsForm({ loading, setLoading, fetching, setF
             />
           </div>
           <label className="block">
-            <span className="sr-only">Змінити логотип</span>
+            <span className="sr-only">{tr('tenant_settings.change_logo')}</span>
             <input 
               type="file" 
               name="logo_file" 
@@ -116,7 +117,7 @@ export default function TenantSettingsForm({ loading, setLoading, fetching, setF
         {/* Назва закладу */}
         <div className="block gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Назва закладу (UA)</label>
+            <label className="block text-sm font-medium text-gray-700">{tr('tenant_settings.restaurant_name')}</label>
             <input 
               name="name_uk" 
               defaultValue={profile.name} 
@@ -128,10 +129,10 @@ export default function TenantSettingsForm({ loading, setLoading, fetching, setF
 
         {/* Унікальний Slug */}
         <div>
-          <label className="block text-sm font-medium text-gray-700">Персональне посилання (Slug)</label>
+          <label className="block text-sm font-medium text-gray-700">{tr('tenant_settings.personal_link')}</label>
           <div className="mt-1 flex rounded-md shadow-sm">
             <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-              menuxo.io/
+              uorder.app/
             </span>
             <input
               name="slug"
@@ -141,15 +142,15 @@ export default function TenantSettingsForm({ loading, setLoading, fetching, setF
               placeholder="my-cool-restaurant"
             />
           </div>
-          <p className="mt-2 text-xs text-gray-500">Це посилання, за яким гості відкриватимуть ваше меню.</p>
+          <p className="mt-2 text-xs text-gray-500">{tr('tenant_settings.slug_helper')}</p>
         </div>
 
         <div className="space-y-4 pt-6 border-t">
-            <h3 className="font-semibold text-lg">Брендинг та контакти</h3>
+            <h3 className="font-semibold text-lg">{tr('tenant_settings.branding_title')}</h3>
   
   {/* Вибір кольору */}
             <div>
-              <label className="block text-sm font-medium">Основний колір бренду</label>
+              <label className="block text-sm font-medium">{tr('tenant_settings.color_label')}</label>
               <div className="mt-1 flex items-center space-x-3">
                 <input 
                   name="mainColor" 
@@ -157,7 +158,7 @@ export default function TenantSettingsForm({ loading, setLoading, fetching, setF
                   defaultValue={profile.mainColor || '#000000'} 
                   className="h-10 w-20 border rounded cursor-pointer" 
                 />
-                <span className="text-gray-500 text-sm">Цей колір буде використано для кнопок та акцентів у меню</span>
+                <span className="text-gray-500 text-sm">{tr('tenant_settings.color_helper')}</span>
               </div>
             </div>
 
@@ -165,7 +166,7 @@ export default function TenantSettingsForm({ loading, setLoading, fetching, setF
             profileLanguages.map((lang: any) => {
                 return (
                     <div key={`desc_key_${lang}`}>
-                        <label className="block text-sm font-medium">Опис ({lang})</label>
+                        <label className="block text-sm font-medium">{tr('tenant_settings.description_label')} ({lang})</label>
                         <textarea name={`desc_${lang}`} className="w-full border rounded p-2" rows={2} />
                     </div>
                 )
@@ -174,7 +175,7 @@ export default function TenantSettingsForm({ loading, setLoading, fetching, setF
 
             {/* Номер телефону */}
             <div>
-              <label className="block text-sm font-medium">Номер телефону</label>
+              <label className="block text-sm font-medium">{tr('tenant_settings.phone_label')}</label>
               <input 
                 name="phone" 
                 defaultValue={profile.phone} 
@@ -188,7 +189,7 @@ export default function TenantSettingsForm({ loading, setLoading, fetching, setF
               {
                 profileLanguages.map((lang: any) => {
                   return (
-                    <input key={`address_key_${lang}`} name={`address_${lang}`} defaultValue={t(profile.address)} placeholder={`Адреса (${lang})`} className="border rounded p-2" />
+                    <input key={`address_key_${lang}`} name={`address_${lang}`} defaultValue={t(profile.address)} placeholder={`${tr('tenant_settings.address_placeholder')} (${lang})`} className="border rounded p-2" />
                   )
                 })
               }
@@ -198,7 +199,7 @@ export default function TenantSettingsForm({ loading, setLoading, fetching, setF
             <div className={`grid grid-cols-1 md:grid-cols-${profileLanguages.length} gap-4`}>
               { profileLanguages.map((lang: any) => {
                   return (
-                    <input key={`hours_key_${lang}`} name={`hours_${lang}`} defaultValue={t(profile.workingHours)} placeholder={`Графік (${lang})`} className="border rounded p-2" />
+                    <input key={`hours_key_${lang}`} name={`hours_${lang}`} defaultValue={t(profile.workingHours)} placeholder={`${tr('tenant_settings.working_hours_placeholder')} (${lang})`} className="border rounded p-2" />
                   )
                 })
               }
@@ -220,7 +221,7 @@ export default function TenantSettingsForm({ loading, setLoading, fetching, setF
             disabled={loading}
             className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:bg-blue-300"
           >
-            {loading ? 'Збереження...' : 'Зберегти зміни'}
+            {loading ? tr('tenant_settings.save_loading') : tr('tenant_settings.save')}
           </button>
         </div>
       </form>

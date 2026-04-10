@@ -2,11 +2,13 @@
 'use client'
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const { tr } = useLanguage();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,8 +36,8 @@ export default function ForgotPasswordPage() {
   return (
     <div className="min-h-screen flex items-center justify-center p-6 bg-gray-50">
       <form onSubmit={handleSubmit} className="max-w-sm w-full space-y-6 bg-white p-8 rounded-3xl shadow-xl">
-        <h1 className="text-2xl font-black">Забули пароль?</h1>
-        <p className="text-sm text-gray-500 font-medium">Введіть email, і ми надішлемо вам код для відновлення.</p>
+        <h1 className="text-2xl font-black">{tr('forgot_password.title')}</h1>
+        <p className="text-sm text-gray-500 font-medium">{tr('forgot_password.subtitle')}</p>
         
         <input 
           type="email" 
@@ -50,7 +52,7 @@ export default function ForgotPasswordPage() {
           disabled={loading}
           className="w-full bg-black text-white py-4 rounded-xl font-bold hover:scale-[1.02] transition-all"
         >
-          {loading ? 'Надсилаємо...' : 'Надіслати код'}
+          {loading ? tr('forgot_password.send_loading') : tr('forgot_password.send')}
         </button>
       </form>
     </div>

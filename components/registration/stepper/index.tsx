@@ -7,19 +7,21 @@ import { LanguageStep } from './lang-step';
 import { ContactsStep } from './contacts';
 import { Check } from 'lucide-react';
 import { VerificationStep } from './verification-step';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function RegistrationStepper() {
   const [step, setStep] = useState(1);
   const [email, setEmail] = useState('');
   const [token, setToken] = useState('');
   const [selectedLangs, setSelectedLangs] = useState(['uk']);
+  const { tr } = useLanguage();
 
   const steps = [
-    { id: 1, label: "Аккаунт" },
-    { id: 2, label: "Брендинг" },
-    { id: 3, label: "Мови" },
-    { id: 4, label: "Контакти" },
-    { id: 5, label: "Email" }
+    { id: 1, label: tr('registration_page.step_1') },
+    { id: 2, label: tr('registration_page.step_2') },
+    { id: 3, label: tr('registration_page.step_3') },
+    { id: 4, label: tr('registration_page.step_4') },
+    { id: 5, label: tr('registration_page.email') }
   ];
 
   return (
@@ -56,7 +58,7 @@ export default function RegistrationStepper() {
             onClick={() => setStep(step + 1)} 
             className="mt-8 w-full text-sm text-gray-400 hover:text-gray-600 transition-colors"
           >
-            Пропустити цей крок
+            {tr('registration_page.skip')}
           </button>
         )}
       </div>

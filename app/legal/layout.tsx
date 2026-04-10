@@ -2,9 +2,11 @@
 import { ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function PolicyLayout({ children, title, lastUpdated }: { children: ReactNode, title: string, lastUpdated: string }) {
   const router = useRouter();
+  const { tr } = useLanguage();
 
   return (
     <div className="min-h-screen bg-white text-black py-24 px-6">
@@ -13,7 +15,7 @@ export default function PolicyLayout({ children, title, lastUpdated }: { childre
           onClick={() => router.back()}
           className="flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-black transition-all mb-12"
         >
-          <ArrowLeft size={16} /> Назад
+          <ArrowLeft size={16} /> {tr('back')}
         </button>
         
         <h1 className="text-4xl md:text-5xl font-black mb-4 tracking-tighter uppercase italic">{title}</h1>

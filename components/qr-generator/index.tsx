@@ -2,10 +2,12 @@
 'use client'
 import { useState } from 'react';
 import { QrCode, Download, RefreshCw } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function QrGenerator({ restaurant, token }: any) {
   const [qrUrl, setQrUrl] = useState(restaurant.qrCodeUrl);
   const [loading, setLoading] = useState(false);
+  const { tr } = useLanguage();
 
   const handleGenerate = async () => {
     setLoading(true);
@@ -30,7 +32,7 @@ export default function QrGenerator({ restaurant, token }: any) {
   return (
     <div className="bg-white mt-6 p-8 rounded-[1rem] border border-gray-100 shadow-sm">
       <div className="flex items-center justify-between mb-8">
-        <h3 className="text-xl font-black uppercase italic tracking-tight">QR Code Меню</h3>
+        <h3 className="text-xl font-black uppercase italic tracking-tight">{tr('tenant_settings.qr_generator.title')}</h3>
         <QrCode size={24} className="text-gray-300" />
       </div>
 
@@ -52,7 +54,7 @@ export default function QrGenerator({ restaurant, token }: any) {
                 download="qr-menu.png"
                 className="flex-1 bg-black text-white h-14 rounded-2xl flex items-center justify-center gap-2 font-bold text-sm hover:opacity-90 transition-all"
               >
-                <Download size={18} /> Завантажити
+                <Download size={18} /> {tr('tenant_settings.qr_generator.upload')}
               </a>
               <button 
                 onClick={handleGenerate}
@@ -68,13 +70,13 @@ export default function QrGenerator({ restaurant, token }: any) {
             <div className="w-20 h-20 bg-gray-50 rounded-3xl flex items-center justify-center mx-auto mb-4 text-gray-300">
               <QrCode size={40} />
             </div>
-            <p className="text-sm text-gray-400 font-medium mb-6">Ваш унікальний QR ще не створено</p>
+            <p className="text-sm text-gray-400 font-medium mb-6">{tr('tenant_settings.qr_generator.empty_state')}</p>
             <button 
               onClick={handleGenerate}
               disabled={loading}
               className="bg-black text-white px-8 py-4 rounded-2xl font-black uppercase text-xs tracking-widest hover:scale-105 transition-all shadow-xl shadow-black/10 disabled:opacity-50"
             >
-              {loading ? "Генеруємо..." : "Створити зараз"}
+              {loading ? tr('tenant_settings.qr_generator.generate') : tr('tenant_settings.qr_generator.create_now')}
             </button>
           </div>
         )}

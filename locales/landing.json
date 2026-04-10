@@ -113,11 +113,11 @@
     "monthly": "Miesiąc",
     "yearly": "Rok",
     "save": "Oszczędź 20%",
-    "currency": "₴",
+    "currency": "Zł  ",
     "plans": {
       "free": { "name": "Free", "price": 0, "features": ["10 dań", "Kod QR", "Podstawowy motyw"] },
-      "base": { "name": "Base", "price": 500, "features": ["Nielimitowana liczba dań", "Analityka", "Własne kolory", "Wsparcie"] },
-      "pro": { "name": "Pro", "price": 1000, "features": ["Wiele lokali", "Zarządzanie personelem", "Priorytetowe wsparcie", "Opisy AI"] }
+      "base": { "name": "Base", "price": 55, "features": ["Nielimitowana liczba dań", "Analityka", "Własne kolory", "Wsparcie"] },
+      "pro": { "name": "Pro", "price": 110, "features": ["Wiele lokali", "Zarządzanie personelem", "Priorytetowe wsparcie", "Opisy AI"] }
     }
   },
   "reviews": {

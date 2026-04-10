@@ -6,7 +6,7 @@ import { ALLERGENS, SPICINESS_LEVELS } from "@/config/menu-constants";
 
 export const EditMenuItemForm = ({ item, categories, onSave, onClose, onDelete }: any) => {
     const [loading, setLoading] = useState(false);
-    const { language, profileLanguages } = useLanguage();
+    const { language, profileLanguages, tr } = useLanguage();
     const [activeTab, setActiveTab] = useState(profileLanguages[0] || 'uk');
 
     // Стан для варіантів (ініціалізуємо існуючими або пустим масивом)
@@ -84,7 +84,7 @@ export const EditMenuItemForm = ({ item, categories, onSave, onClose, onDelete }
             {/* Header */}
             <div className="p-6 border-b border-gray-50 flex items-center justify-between bg-gray-50/30">
                 <div>
-                    <h3 className="text-xl font-bold text-gray-900">Редагувати страву</h3>
+                    <h3 className="text-xl font-bold text-gray-900">{tr('menu_page.edit_form.title')}</h3>
                     <p className="text-[10px] text-gray-400 mt-1 uppercase tracking-widest font-black">ID: {item.id.slice(-8)}</p>
                 </div>
                 <button onClick={onClose} className="p-2 hover:bg-white rounded-full transition-colors border border-transparent hover:border-gray-100">
@@ -97,7 +97,7 @@ export const EditMenuItemForm = ({ item, categories, onSave, onClose, onDelete }
                 <div className="flex justify-center">
                     <div className="relative group w-40 h-40">
                         <img 
-                            src={item.image || '/placeholder-food.png'} 
+                            src={item.image || 'https://blocks.astratic.com/img/general-img-square.png'} 
                             className="w-full h-full object-cover rounded-[2.5rem] border-4 border-gray-50 shadow-md"
                             alt="" 
                         />
@@ -109,7 +109,7 @@ export const EditMenuItemForm = ({ item, categories, onSave, onClose, onDelete }
 
                 {/* Статус наявності */}
                 <div className="flex items-center justify-between p-4 bg-gray-50 rounded-2xl">
-                    <label htmlFor="available" className="text-sm font-bold text-gray-700">Страва доступна в меню</label>
+                    <label htmlFor="available" className="text-sm font-bold text-gray-700">{tr('menu_page.edit_form.available')}</label>
                     <input 
                         type="checkbox" 
                         name="isAvailable" 
@@ -129,13 +129,13 @@ export const EditMenuItemForm = ({ item, categories, onSave, onClose, onDelete }
                             onChange={(e) => setHasVariants(e.target.checked)}
                             className="w-4 h-4 accent-black"
                         />
-                        <label htmlFor="hasVariants" className="text-sm font-bold text-gray-900">Використовувати варіанти (розміри/вага)</label>
+                        <label htmlFor="hasVariants" className="text-sm font-bold text-gray-900">{tr('menu_page.edit_form.variant_label')}</label>
                     </div>
 
                     {!hasVariants ? (
                         <div>
                             <div className="space-y-1.5 animate-in fade-in zoom-in-95">
-                                <label className="text-[10px] font-black uppercase text-gray-400 ml-1">Стандартна ціна (UAH)</label>
+                                <label className="text-[10px] font-black uppercase text-gray-400 ml-1">{tr('menu_page.edit_form.stable_price_label')}</label>
                                 <input 
                                     name="basePrice" 
                                     type="number" 
@@ -144,7 +144,7 @@ export const EditMenuItemForm = ({ item, categories, onSave, onClose, onDelete }
                                 />
                             </div>
                             <div className="space-y-1.5 animate-in fade-in zoom-in-95">
-                                <label className="text-[10px] font-black uppercase text-gray-400 ml-1">Вага / Об'єм</label>
+                                <label className="text-[10px] font-black uppercase text-gray-400 ml-1">{tr('menu_page.edit_form.weight_label')}</label>
                                 <input 
                                     name="weight" 
                                     type="text" 
@@ -156,9 +156,9 @@ export const EditMenuItemForm = ({ item, categories, onSave, onClose, onDelete }
                     ) : (
                         <div className="space-y-3 animate-in fade-in zoom-in-95">
                             <div className="flex justify-between items-center">
-                                <span className="text-[10px] font-black uppercase text-gray-400 ml-1">Список варіантів</span>
+                                <span className="text-[10px] font-black uppercase text-gray-400 ml-1">{tr('menu_page.edit_form.variants_list')}</span>
                                 <button type="button" onClick={addVariant} className="text-xs bg-black text-white px-3 py-1 rounded-full flex items-center gap-1">
-                                    <Plus size={14} /> Додати
+                                    <Plus size={14} /> {tr('menu_page.edit_form.add_btn')}
                                 </button>
                             </div>
                             {variants.map((v: any) => (
@@ -167,7 +167,7 @@ export const EditMenuItemForm = ({ item, categories, onSave, onClose, onDelete }
                                         {profileLanguages.map((lang: string) => (
                                             <div key={lang}>
                                                 <input 
-                                                    placeholder={`Назва (${lang})`}
+                                                    placeholder={`${tr('menu_page.edit_form.name_placeholder')} (${lang})`}
                                                     defaultValue={v.label?.[lang]}
                                                     onChange={(e) => updateVariant(v.tempId, 'label', e.target.value, lang)}
                                                     className="w-full text-xs p-2 bg-transparent border-b border-gray-200 outline-none focus:border-black"
@@ -177,7 +177,7 @@ export const EditMenuItemForm = ({ item, categories, onSave, onClose, onDelete }
                                     </div>
                                     <input 
                                         type="number"
-                                        placeholder="Ціна"
+                                        placeholder={tr('menu_page.edit_form.price_placeholder')}
                                         defaultValue={v.price}
                                         onChange={(e) => updateVariant(v.tempId, 'price', e.target.value)}
                                         className="w-full text-sm p-2 bg-transparent border-b border-gray-200 outline-none focus:border-black font-bold"
@@ -216,7 +216,7 @@ export const EditMenuItemForm = ({ item, categories, onSave, onClose, onDelete }
                     {profileLanguages.map((lang: string) => (
                         <div key={lang} className={activeTab === lang ? "space-y-4 animate-in fade-in duration-300" : "hidden"}>
                             <div className="space-y-1.5">
-                                <label className="text-[10px] font-black text-gray-400 uppercase">Назва страви</label>
+                                <label className="text-[10px] font-black text-gray-400 uppercase">{tr('menu_page.edit_form.item_name')}</label>
                                 <input 
                                     name={`name_${lang}`}
                                     defaultValue={item.name[lang]}
@@ -224,7 +224,7 @@ export const EditMenuItemForm = ({ item, categories, onSave, onClose, onDelete }
                                 />
                             </div>
                             <div className="space-y-1.5">
-                                <label className="text-[10px] font-black text-gray-400 uppercase">Опис</label>
+                                <label className="text-[10px] font-black text-gray-400 uppercase">{tr('menu_page.edit_form.item_description')}</label>
                                 <textarea 
                                     name={`description_${lang}`}
                                     defaultValue={item.description?.[lang]}
@@ -238,7 +238,7 @@ export const EditMenuItemForm = ({ item, categories, onSave, onClose, onDelete }
 
                 {/* Категорія */}
                 <div className="space-y-1.5">
-                    <label className="text-[10px] font-black text-gray-400 uppercase">Категорія</label>
+                    <label className="text-[10px] font-black text-gray-400 uppercase">{tr('menu_page.edit_form.item_categories')}</label>
                     <div className="relative">
                         <select 
                             name="categoryId" 
@@ -255,7 +255,7 @@ export const EditMenuItemForm = ({ item, categories, onSave, onClose, onDelete }
                 
                 {/* Гострота */}
                     <div className="space-y-3">
-                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Гострота</label>
+                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest">{tr('menu_page.edit_form.spiciness')}</label>
                     <div className="flex gap-2">
                         {SPICINESS_LEVELS.map((level) => (
                         <button
@@ -276,7 +276,7 @@ export const EditMenuItemForm = ({ item, categories, onSave, onClose, onDelete }
 
                     {/* Алергени */}
                     <div className="space-y-3">
-                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Алергени</label>
+                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest">{tr('menu_page.edit_form.alergens')}</label>
                     <div className="flex flex-wrap gap-2">
                         {ALLERGENS.map((allergen) => {
                         const isSelected = selectedAllergens.includes(allergen.id);
@@ -305,7 +305,7 @@ export const EditMenuItemForm = ({ item, categories, onSave, onClose, onDelete }
                     disabled={loading}
                     className="w-full bg-black text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-black/10"
                 >
-                    {loading ? "Зберігаємо..." : <><Save size={18} /> Зберегти зміни</>}
+                    {loading ? tr('menu_page.edit_form.save_loading') : <><Save size={18} /> {tr('menu_page.edit_form.save')}</>}
                 </button>
                 
                 <button 
@@ -313,7 +313,7 @@ export const EditMenuItemForm = ({ item, categories, onSave, onClose, onDelete }
                     onClick={() => onDelete(item.id)}
                     className="w-full py-2 text-red-400 text-xs font-bold hover:text-red-600 transition-all uppercase tracking-widest"
                 >
-                    Видалити страву
+                    {tr('menu_page.edit_form.delete')}
                 </button>
             </div>
                 </div>

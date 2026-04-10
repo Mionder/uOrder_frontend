@@ -21,7 +21,7 @@ export const MenuItem = ({ info, baseColor }: any) => {
         <div className="relative w-[115px] h-[115px] shrink-0">
           <img 
             className="w-full h-full rounded-3xl object-cover shadow-sm bg-gray-50" 
-            src={info.image} 
+            src={info.image || 'https://blocks.astratic.com/img/general-img-square.png'} 
             alt={t(info.name)} 
             loading="lazy"
           />
@@ -90,9 +90,14 @@ export const MenuItem = ({ info, baseColor }: any) => {
               </div>
             </div>
 
-            <div className="text-[10px] font-extrabold text-black bg-gray-100 px-2.5 py-1.5 rounded-xl uppercase tracking-widest">
-              {info.weight}
-            </div>
+            {
+              info.weight && (
+              <div className="text-[10px] font-extrabold text-black bg-gray-100 px-2.5 py-1.5 rounded-xl uppercase tracking-widest">
+                {info.weight}
+              </div>
+              )
+            }
+            
           </div>
         </div>
       </div>

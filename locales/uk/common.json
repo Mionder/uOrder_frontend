@@ -16,6 +16,7 @@
     "edit_menu": "Редагувати меню",
     "edit_caterories": "Керувати розділами",
     "likes_desc": "Від реальних гостей",
+    "view_link": "Посилання на ваше меню",
     "profile_settings": "Налаштування профілю",
     "profile_settings_desc": "Налаштуйте кольори, логотип та контакти",
     "quick_actions": "Швидкі дії",
@@ -82,5 +83,141 @@
         "save": "Збереження...",
         "create_button": "Створити категорію"
     }
-  }
+  },
+  "menu_page": {
+    "title": "Керування меню",
+    "subtitle": "Створюйте категорії та додавайте страви",
+    "add_btn": "Додати страву",
+    "edit_form": {
+      "title": "Редагувати страву",
+      "available": "Страва доступна в меню",
+      "variant_label": "Використовувати варіанти (розміри/вага)",
+      "stable_price_label": "Стандартна ціна (UAH)",
+      "weight_label": "Вага / Об'єм",
+      "variants_list": "Список варіантів",
+      "add_btn": "Додати",
+      "name_placeholder": "Назва",
+      "price_placeholder": "Ціна",
+      "item_name": "Назва страви",
+      "item_description": "Опис",
+      "item_categories": "Категорія",
+      "spiciness": "Гострота",
+      "alergens": "Алергени",
+      "save": "Зберегти зміни",
+      "save_loading": "Зберігаємо...",
+      "delete": "Видалити страву"
+    },
+    "add_form": {
+      "title": "Нова страва",
+      "variants_label": "Ця страва має варіанти (об'єм, розмір тощо)",
+      "label": "Мітка",
+      "weight_placeholder": "Напр. 0.5л або XL",
+      "add_photo": "Клікніть, щоб додати фото",
+      "cancel": "Скасувати",
+      "variant_price": "Ціна варіанту"
+    }
+  },
+  "tenant_settings": {
+    "title": "Налаштування закладу",
+    "change_logo": "Змінити логотип",
+    "restaurant_name": "Назва закладу (UA)",
+    "personal_link": "Персональне посилання (Slug)",
+    "slug_helper": "Це посилання, за яким гості відкриватимуть ваше меню.",
+    "branding_title": "Брендинг та контакти",
+    "color_label": "Основний колір бренду",
+    "color_helper": "Цей колір буде використано для кнопок та акцентів у меню",
+    "description_label": "Опис",
+    "phone_label": "Номер телефону",
+    "address_placeholder": "Адреса",
+    "working_hours_placeholder": "Графік",
+    "save": "Зберегти зміни",
+    "save_loading": "Збереження..." ,
+    "qr_generator": {
+      "title": "QR Code Меню",
+      "upload": "Завантажити",
+      "generate": "Генеруємо...",
+      "create_now": "Створити зараз",
+      "empty_state": "Ваш унікальний QR ще не створено"
+    }
+  },
+  "forgot_password": {
+    "title": "Забули пароль?",
+    "subtitle": "Введіть email, і ми надішлемо вам код для відновлення.",
+    "send": "Надіслати код",
+    "send_loading": "Надсилаємо..."
+  },
+  "reset_password": {
+    "network_error": "Помилка зʼєднання з сервером",
+    "code_error": "Щось пішло не так. Перевірте код.",
+    "match_error": "Паролі не співпадають",
+    "length_error": "Введіть повний код з листа",
+    "title": "Відновлення пароля",
+    "subtitle": "Ми надіслали код на",
+    "email_code": "Код з листа",
+    "submit_btn": "Змінити пароль",
+    "submit_btn_loading": "Оновлюємо...",
+    "new_password": "Новий пароль",
+    "confirm_password": "Повторіть пароль",
+    "loading_state": "Завантаження..."
+  },
+  "back": "Назад",
+  "registration_page": {
+    "title": "Створення закладу",
+    "subtitle": "Пройдіть 5 простих кроків, щоб запустити ваше онлайн-меню",
+    "step_1": "Аккаунт",
+    "step_2": "Брендинг",
+    "step_3": "Мови",
+    "step_4": "Контакти",
+    "email": "Email",
+    "skip": "Пропустити цей крок",
+    "finish_button": "Завершити налаштування",
+    "auth_step": {
+      "name": "Назва закладу",
+      "name_placeholder": "Суші Майстер",
+      "slug": "Slug (Посилання)",
+      "slug_placeholder": "sushi-master",
+      "email": "Email аккаунта",
+      "password": "Пароль",
+      "submit_btn": "Створити аккаунт",
+      "submit_btn_loading": "Реєстрація..."
+    },
+    "branding_step": {
+      "image_helper": "Натисніть, щоб завантажити логотип закладу",
+      "color": "Фірмовий колір",
+      "color_helper": "Цей колір буде головним акцентом вашого цифрового меню"
+    },
+    "continue": "Продовжити",
+    "saving": "Збереження...",
+    "language_step": {
+      "title": "Які мови підтримує ваш заклад?"
+    },
+    "contacts_step": {
+      "title": "Контакти та опис",
+      "subtitle": "Ця інформація буде відображатися в розділі 'Про нас'",
+      "phone": "Контактний телефон",
+      "locale": "Локалізація:",
+      "address": "Адреса",
+      "description_first": "Опис вашого закладу",
+      "description_second": "декілька слів про атмосферу чи кухню."
+    },
+    "email_step": {
+      "title": "Підтвердіть вашу пошту",
+      "subtitle": "Ми надіслали 6-значний код на",
+      "confirm": "Підтвердити",
+      "confirm_loading": "Перевірка...",
+      "resend": "Надіслати код повторно",
+      "skip": "Я зроблю це пізніше в профілі"
+    }
+  },
+  "global_error_page": {
+    "title": "Ой, щось пішло не так",
+    "subtitle": "Сталася непередбачена помилка. Ми вже працюємо над її виправленням.",
+    "try_again": "Спробувати ще раз",
+    "homepage": "Повернутися на головну"
+  },
+  "empty_categories": "Ви ще не створили щодної категорії",
+  "go_to_categories": "Перейти до категорій",
+  "navigate": "Перейти",
+  "reg_link": "Немає акаунту?",
+  "create_now": "Створіть його зараз"
 }

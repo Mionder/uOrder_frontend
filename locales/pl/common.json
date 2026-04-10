@@ -1,20 +1,32 @@
 {
   "auth": {
-    "login_title": "Logowanie",
-    "register_title": "Utwórz restaurację",
+    "login_title": "Logowanie do panelu",
+    "register_title": "Tworzenie lokalu",
     "email_label": "Email konta",
     "password_label": "Hasło",
     "button_login": "Zaloguj się",
     "button_register": "Zarejestruj się",
-    "loading": "Enter...",
-    "forgot_password": "Forgot password?"
+    "loading": "Logowanie...",
+    "forgot_password": "Zapomniałeś hasła?"
   },
   "dashboard": {
     "stats_items": "Dania",
     "stats_categories": "Kategorie",
     "stats_likes": "Polubienia",
-    "quick_actions": "Szybkie działania",
-    "payment": "Payment"
+    "edit_menu": "Edytuj menu",
+    "edit_caterories": "Zarządzaj sekcjami",
+    "likes_desc": "Od realnych gości",
+    "view_link": "Link do Twojego menu",
+    "profile_settings": "Ustawienia profilu",
+    "profile_settings_desc": "Skonfiguruj kolory, logo i kontakty",
+    "quick_actions": "Szybkie akcje",
+    "dashboard": "Pulpit",
+    "dashboard_subtitle": "Zarządzanie restauracją w czasie rzeczywistym",
+    "menu": "Menu",
+    "profile": "Profil",
+    "logout": "Wyloguj się",
+    "payment": "Płatność",
+    "menu_views": "Wyświetlenia menu"
   },
   "registration": {
     "step_1": "Konto",
@@ -22,5 +34,190 @@
     "step_3": "Języki",
     "step_4": "Kontakty",
     "finish_button": "Zakończ konfigurację"
-  }
+  },
+  "not_found": {
+    "title": "Nie znaleziono lokalu",
+    "subtitle": "Wygląda na to, że ten link wygasł lub strona została usunięta.",
+    "back_button": "Do strony głównej"
+  },
+  "public_menu_error": {
+    "title": "Menu chwilowo niedostępne",
+    "subtitle": "Wiemy o problemie i pracujemy nad jego rozwiązaniem. Spróbuj odświeżyć stronę za chwilę.",
+    "update": "Odśwież menu"
+  },
+  "menu_item": {
+    "from": "od"
+  },
+  "billing": {
+    "back_button": "Wstecz",
+    "title": "Zarządzanie subskrypcją",
+    "subtitle": "Rozwijaj swój biznes z",
+    "current_plan": "Aktualny plan",
+    "system_status": "Status systemu",
+    "status_active": "Aktywny",
+    "month": "Miesiąc",
+    "year": "Rok",
+    "security": "Płatności chronione szyfrowaniem AES-256",
+    "select_plan": "Wybierz plan",
+    "best_choice": "Najlepszy wybór"
+  },
+  "dashboard_error": {
+    "title": "Nie udało się załadować statystyk",
+    "subtitle": "Serwer jest tymczasowo niedostępny",
+    "reload": "Odśwież dane"
+  },
+  "loading": "Ładowanie",
+  "categories_page": {
+    "title": "Kategorie menu",
+    "subtitle": "Zarządzaj sekcjami swojego lokalu",
+    "add_button": "Dodaj kategorię",
+    "close": "Zamknij",
+    "create_title": "Tworzenie nowej kategorii",
+    "empty_state": "Brak kategorii",
+    "delete": "Usuń",
+    "create_form": {
+      "name": "Nazwa",
+      "placeholder_name": "Np. Zimne napoje",
+      "slug": "Ścieżka (Slug)",
+      "placeholder_slug": "przyklad-zimne-napoje",
+      "save": "Zapisywanie...",
+      "create_button": "Utwórz kategorię"
+    }
+  },
+  "menu_page": {
+    "title": "Zarządzanie menu",
+    "subtitle": "Twórz kategorie i dodawaj dania",
+    "add_btn": "Dodaj danie",
+    "edit_form": {
+      "title": "Edytuj danie",
+      "available": "Danie dostępne w menu",
+      "variant_label": "Użyj wariantów (rozmiar/waga)",
+      "stable_price_label": "Cena standardowa (UAH)",
+      "weight_label": "Waga / Objętość",
+      "variants_list": "Lista wariantów",
+      "add_btn": "Dodaj",
+      "name_placeholder": "Nazwa",
+      "price_placeholder": "Cena",
+      "item_name": "Nazwa dania",
+      "item_description": "Opis",
+      "item_categories": "Kategoria",
+      "spiciness": "Ostrość",
+      "alergens": "Alergeny",
+      "save": "Zapisz zmiany",
+      "save_loading": "Zapisywanie...",
+      "delete": "Usuń danie"
+    },
+    "add_form": {
+      "title": "Nowe danie",
+      "variants_label": "To danie ma warianty (objętość, rozmiar itp.)",
+      "label": "Etykieta",
+      "weight_placeholder": "Np. 0.5L lub XL",
+      "add_photo": "Kliknij, aby dodać zdjęcie",
+      "cancel": "Anuluj",
+      "variant_price": "Cena wariantu"
+    }
+  },
+  "tenant_settings": {
+    "title": "Ustawienia lokalu",
+    "change_logo": "Zmień logo",
+    "restaurant_name": "Nazwa lokalu (UA)",
+    "personal_link": "Link personalny (Slug)",
+    "slug_helper": "To jest link, za pomocą którego goście otworzą Twoje menu.",
+    "branding_title": "Branding i kontakty",
+    "color_label": "Główny kolor marki",
+    "color_helper": "Ten kolor zostanie użyty dla przycisków i akcentów w menu",
+    "description_label": "Opis",
+    "phone_label": "Numer telefonu",
+    "address_placeholder": "Adres",
+    "working_hours_placeholder": "Godziny pracy",
+    "save": "Zapisz zmiany",
+    "save_loading": "Zapisywanie...",
+    "qr_generator": {
+      "title": "Menu QR Code",
+      "upload": "Pobierz",
+      "generate": "Generowanie...",
+      "create_now": "Utwórz teraz",
+      "empty_state": "Twój unikalny kod QR nie został jeszcze utworzony"
+    }
+  },
+  "forgot_password": {
+    "title": "Zapomniałeś hasła?",
+    "subtitle": "Wpisz email, a wyślemy Ci kod do odzyskiwania hasła.",
+    "send": "Wyślij kod",
+    "send_loading": "Wysyłanie..."
+  },
+  "reset_password": {
+    "network_error": "Błąd połączenia z serwerem",
+    "code_error": "Coś poszło nie tak. Sprawdź kod.",
+    "match_error": "Hasła nie są identyczne",
+    "length_error": "Wpisz pełny kod z wiadomości",
+    "title": "Odzyskiwanie hasła",
+    "subtitle": "Wysłaliśmy kod na",
+    "email_code": "Kod z wiadomości",
+    "submit_btn": "Zmień hasło",
+    "submit_btn_loading": "Aktualizacja...",
+    "new_password": "Nowe hasło",
+    "confirm_password": "Powtórz hasło",
+    "loading_state": "Ładowanie..."
+  },
+  "back": "Wstecz",
+  "registration_page": {
+    "title": "Tworzenie lokalu",
+    "subtitle": "Wykonaj 5 prostych kroków, aby uruchomić swoje menu online",
+    "step_1": "Konto",
+    "step_2": "Branding",
+    "step_3": "Języki",
+    "step_4": "Kontakty",
+    "email": "Email",
+    "skip": "Pomiń ten krok",
+    "finish_button": "Zakończ konfigurację",
+    "auth_step": {
+      "name": "Nazwa lokalu",
+      "name_placeholder": "Sushi Master",
+      "slug": "Slug (Link)",
+      "slug_placeholder": "sushi-master",
+      "email": "Email konta",
+      "password": "Hasło",
+      "submit_btn": "Utwórz konto",
+      "submit_btn_loading": "Rejestracja..."
+    },
+    "branding_step": {
+      "image_helper": "Kliknij, aby przesłać logo lokalu",
+      "color": "Kolor firmowy",
+      "color_helper": "Ten kolor będzie głównym akcentem Twojego cyfrowego menu"
+    },
+    "continue": "Kontynuuj",
+    "saving": "Zapisywanie...",
+    "language_step": {
+      "title": "Jakie języki obsługuje Twój lokal?"
+    },
+    "contacts_step": {
+      "title": "Kontakty i opis",
+      "subtitle": "Te informacje będą wyświetlane w sekcji 'O nas'",
+      "phone": "Telefon kontaktowy",
+      "locale": "Lokalizacja:",
+      "address": "Adres",
+      "description_first": "Opis Twojego lokalu",
+      "description_second": "kilka słów o atmosferze lub kuchni."
+    },
+    "email_step": {
+      "title": "Zweryfikuj swój email",
+      "subtitle": "Wysłaliśmy 6-cyfrowy kod na",
+      "confirm": "Potwierdź",
+      "confirm_loading": "Weryfikacja...",
+      "resend": "Wyślij kod ponownie",
+      "skip": "Zrobię to później w profilu"
+    }
+  },
+  "global_error_page": {
+    "title": "Ojej, coś poszło nie tak",
+    "subtitle": "Wystąpił nieoczekiwany błąd. Pracujemy już nad jego naprawą.",
+    "try_again": "Spróbuj ponownie",
+    "homepage": "Wróć do strony głównej"
+  },
+  "empty_categories": "Nie utworzyłeś jeszcze żadnej kategorii",
+  "go_to_categories": "Przejdź do kategorii",
+  "navigate": "Przejdź do",
+  "reg_link": "Nie masz konta?",
+  "create_now": "Utwórz je teraz"
 }
