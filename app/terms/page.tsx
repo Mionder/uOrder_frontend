@@ -2,7 +2,7 @@ import PolicyLayout from '../legal/layout';
 
 export default function TermsPage() {
   return (
-    <PolicyLayout title="Terms of Service" lastUpdated="April 6, 2026">
+    <PolicyLayout>
       <h3>1. Service Provider</h3>
       <p>The Service is provided by <strong>Individual Entrepreneur (FOP) Oliinyk Serhii Oleksandrovych</strong>, registered under the laws of Ukraine (ITN: 3686503510), address: 60 Avtozavodska St, apt. 92, Zaporizhzhia, Ukraine, 69118.</p>
 

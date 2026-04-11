@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
-export default function PolicyLayout({ children, title, lastUpdated }: { children: ReactNode, title: string, lastUpdated: string }) {
+export default function PolicyLayout({ children }: { children: ReactNode }) {
   const router = useRouter();
   const { tr } = useLanguage();
 
@@ -18,9 +18,14 @@ export default function PolicyLayout({ children, title, lastUpdated }: { childre
           <ArrowLeft size={16} /> {tr('back')}
         </button>
         
+        {
+          /*
         <h1 className="text-4xl md:text-5xl font-black mb-4 tracking-tighter uppercase italic">{title}</h1>
         <p className="text-xs font-black text-gray-300 uppercase tracking-widest mb-12">Last Updated: {lastUpdated}</p>
-        
+           
+          */
+        }
+       
         <div className="prose prose-zinc max-w-none 
           prose-h3:text-xl prose-h3:font-black prose-h3:mt-10 prose-h3:mb-4 prose-h3:uppercase prose-h3:tracking-tight
           prose-p:text-gray-600 prose-p:leading-relaxed prose-p:mb-4

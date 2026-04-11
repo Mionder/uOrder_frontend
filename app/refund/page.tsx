@@ -2,7 +2,7 @@ import PolicyLayout from '../legal/layout';
 
 export default function RefundPage() {
   return (
-    <PolicyLayout title="Refund & Cancellation" lastUpdated="April 6, 2026">
+    <PolicyLayout>
       <h3>1. Cancellations</h3>
       <p>You may cancel your uOrder subscription at any time through your account dashboard. Upon cancellation, you will continue to have access to the Service until the end of your current paid billing period.</p>
 

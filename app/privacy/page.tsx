@@ -2,7 +2,7 @@ import PolicyLayout from '../legal/layout';
 
 export default function PrivacyPage() {
   return (
-    <PolicyLayout title="Privacy Policy" lastUpdated="April 6, 2026">
+    <PolicyLayout>
       <h3>1. Data We Collect</h3>
       <ul>
         <li><strong>Account Data:</strong> Email address, restaurant name, and contact details provided during registration.</li>
