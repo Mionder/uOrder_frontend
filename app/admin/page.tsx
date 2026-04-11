@@ -18,7 +18,7 @@ export default async function Admin() {
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gray-900 text-white mb-4 shadow-xl">
             <Utensils size={32} />
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Menuxo Admin</h1>
+          <h1 className="text-3xl font-bold text-gray-900 tracking-tight">uOrder Admin</h1>
           <p className="text-gray-500 mt-2">Керуйте вашим меню та закладом</p>
         </div>
 
@@ -27,7 +27,7 @@ export default async function Admin() {
         </div>
 
         <p className="text-center mt-8 text-sm text-gray-400">
-          &copy; 2026 Menuxo. Всі права захищені.
+          &copy; 2026 uOrder. Всі права захищені.
         </p>
       </div>
     </div>

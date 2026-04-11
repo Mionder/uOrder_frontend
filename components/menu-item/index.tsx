@@ -4,7 +4,14 @@ import { LikeButton } from "../admin/dashboard/menu/like-button";
 import { ALLERGENS } from "@/config/menu-constants";
 import { Flame, Info } from "lucide-react";
 
-export const MenuItem = ({ info, baseColor }: any) => {
+const CURRENCIES = [
+  { id: 'UAH', symbol: '₴', label: 'Hryvnia' },
+  { id: 'USD', symbol: '$', label: 'Dollar' },
+  { id: 'EUR', symbol: '€', label: 'Euro' },
+  { id: 'PLN', symbol: 'Zl', label: 'Zloty' },
+];
+
+export const MenuItem = ({ info, baseColor, currency }: any) => {
   const { t, tr } = useLanguage();
   
   const renderPrice = () => {
@@ -86,7 +93,7 @@ export const MenuItem = ({ info, baseColor }: any) => {
                   <span className="text-[9px] uppercase font-black text-gray-300 tracking-widest mr-0.5">{tr('menu_item.from')}</span>
                 )}
                 {renderPrice()}
-                <span className="text-[12px] font-black ml-0.5 uppercase">₴</span>
+                <span className="text-[12px] font-black ml-0.5 uppercase">{currency}</span>
               </div>
             </div>
 

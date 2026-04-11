@@ -229,10 +229,10 @@ const calculateYearlyPrice = (basePrice: number) => {
         {content.footer.contacts}
       </h4>
       <div className="flex items-center gap-3 text-sm font-bold hover:text-gray-500 transition-colors cursor-pointer">
-        <Mail size={16} strokeWidth={2.5}/> sergejjolejj@gmail.com
+        <Mail size={16} strokeWidth={2.5}/> uorder.app.menu@gmail.com
       </div>
       <div className="flex items-center gap-3 text-sm font-bold hover:text-gray-500 transition-colors cursor-pointer">
-        <Phone size={16} strokeWidth={2.5}/> +380 00 000 00 00
+        <Phone size={16} strokeWidth={2.5}/> +380 93 783 06 15
       </div>
     </div>
 

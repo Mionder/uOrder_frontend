@@ -6,9 +6,17 @@ import { useLanguage } from '@/context/LanguageContext';
 import React, { useState, useEffect } from 'react';
 import { Loader } from '../../ui/loader';
 
+const CURRENCIES = [
+  { id: 'UAH', symbol: '₴', label: 'Hryvnia' },
+  { id: 'USD', symbol: '$', label: 'Dollar' },
+  { id: 'EUR', symbol: '€', label: 'Euro' },
+  { id: 'PLN', symbol: 'Zl', label: 'Zloty' },
+];
+
 export default function TenantSettingsForm({ loading, setLoading, fetching, setFetching, profile, setProfile, logoPreview, setLogoPreview, token }: any) {
   // 1. Завантажуємо поточні дані при стартi
   const { profileLanguages, t, tr } = useLanguage();
+  const [currency, setCurrency] = useState(profile?.currency || 'PLN');
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     setLoading(true);
@@ -51,6 +59,7 @@ export default function TenantSettingsForm({ loading, setLoading, fetching, setF
         logo: finalLogoUrl,
         mainColor: formData.get('mainColor') as string,
         phone: formData.get('phone') as string,
+        currency,
         description,
         address,
         workingHours,
@@ -172,6 +181,29 @@ export default function TenantSettingsForm({ loading, setLoading, fetching, setF
                 )
             })
           }
+
+          {/* Вибір валюти */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              {tr('tenant_settings.currency_label') || 'Валюта закладу'}
+            </label>
+            <div className="flex bg-gray-100 p-1 rounded-lg">
+              {CURRENCIES.map((c) => (
+                <button
+                  key={c.id}
+                  type="button"
+                  onClick={() => setCurrency(c.symbol)}
+                  className={`flex-1 py-2 px-1 rounded-md text-sm font-bold transition-all ${
+                    currency === c.symbol 
+                      ? "bg-white text-black shadow-sm" 
+                      : "text-gray-500 hover:text-gray-700"
+                  }`}
+                >
+                  {c.symbol} <span className="text-[10px] font-normal opacity-60">{c.id}</span>
+                </button>
+              ))}
+            </div>
+          </div>
 
             {/* Номер телефону */}
             <div>

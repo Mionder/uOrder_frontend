@@ -82,10 +82,11 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${jakarta.variable} h-full antialiased`}
+      style={{ colorScheme: 'light !important' }}
     >
       <AuthProvider>
         <LanguageProvider>
-          <body className="!light min-h-full flex !font-sans flex-col">{children}</body>      
+          <body className="!light-theme-only min-h-full flex !font-sans flex-col">{children}</body>      
         </LanguageProvider>
       </AuthProvider>
     </html>

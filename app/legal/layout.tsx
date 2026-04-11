@@ -34,7 +34,7 @@ export default function PolicyLayout({ children }: { children: ReactNode }) {
         </div>
 
         <div className="mt-20 pt-10 border-t border-gray-100 text-[10px] font-bold text-gray-400 uppercase tracking-widest">
-          uOrder System • FOP Oliinyk Serhii Oleksandrovych • sergejjolejj@gmail.com
+          uOrder System • FOP Oliinyk Serhii Oleksandrovych • uorder.app.menu@gmail.com
         </div>
       </div>
     </div>
