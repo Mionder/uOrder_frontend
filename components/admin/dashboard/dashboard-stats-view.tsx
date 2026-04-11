@@ -67,7 +67,7 @@ export const DashboardStatsView = ({ profile, stats, onNavigate }: any) => {
 
             {/* Великий банер переходу в профіль */}
             <div className="bg-white border border-gray-100 p-8 rounded-3xl flex items-center justify-between">
-                <div className="flex md:flex-row items-center gap-6">
+                <div className="flex flex-col md:flex-row items-center gap-6">
                     <img src={profile?.logo} className="w-16 h-16 rounded-2xl border shadow-sm" alt="" />
                     <div>
                         <h3 className="text-xl font-bold">{profile?.name.uk}</h3>
