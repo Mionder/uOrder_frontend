@@ -95,7 +95,6 @@ const onDragEnd = async (result: DropResult) => {
     }
 
     // 5. Відправка на бекенд (PATCH /v1/admin/menu/reorder)
-    console.log('itemsToUpdate', itemsToUpdate);
     try {
       const response = await fetch('http://localhost:3000/v1/admin/menu/reorder', {
         method: 'PATCH',
@@ -222,6 +221,7 @@ const onSave = async (id: string, data: any) => {
               onClose={() => setSelectedItem(null)} 
               categories={categories}
               onSave={onSave}
+              slug={slug}
             />
           </div>
         </div>

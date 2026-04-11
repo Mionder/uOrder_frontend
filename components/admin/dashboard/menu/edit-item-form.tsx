@@ -3,8 +3,9 @@ import { useState } from "react";
 import { Save, X, Trash2, Image as ImageIcon, Plus, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { ALLERGENS, SPICINESS_LEVELS } from "@/config/menu-constants";
+import { refreshMenu } from "@/actions";
 
-export const EditMenuItemForm = ({ item, categories, onSave, onClose, onDelete }: any) => {
+export const EditMenuItemForm = ({ item, categories, onSave, onClose, onDelete, slug }: any) => {
     const [loading, setLoading] = useState(false);
     const { language, profileLanguages, tr } = useLanguage();
     const [activeTab, setActiveTab] = useState(profileLanguages[0] || 'uk');
@@ -75,6 +76,7 @@ export const EditMenuItemForm = ({ item, categories, onSave, onClose, onDelete }
         };
 
         await onSave(item.id, updateData);
+        await refreshMenu(slug);
         setLoading(false);
         onClose();
     };

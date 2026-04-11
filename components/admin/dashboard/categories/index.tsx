@@ -4,17 +4,21 @@ import { AddCategoryForm } from "./add-category-form";
 import { deleteCategoryRequest } from "./delete-category-service";
 import { useLanguage } from "@/context/LanguageContext";
 import { Trash2, Plus, Layers, ChevronRight } from "lucide-react";
+import { refreshMenu } from "@/actions";
+import { useAuth } from "@/context/AuthContext";
 
 export const CategoriesAdmin = ({ categories: initialCategories, profile }: any) => {
     const { t, tr } = useLanguage();
     const [isFormOpen, setIsFormOpen] = useState(false);
     const [categories, setCategories] = useState(initialCategories);
+    const { token } = useAuth();
 
     const handleDelete = async (id: string) => {
         if (!confirm("Ви впевнені, що хочете видалити цю категорію?")) return;
-        const res = await deleteCategoryRequest(id);
+        const res = await deleteCategoryRequest(id, token || '');
         if (res) {
             setCategories(categories.filter((c: any) => c.id !== id));
+            await refreshMenu(profile.slug);
         }
     };
 
@@ -40,6 +44,7 @@ export const CategoriesAdmin = ({ categories: initialCategories, profile }: any)
                         categoriesAmount={categories.length} 
                         lang={profile.languages} 
                         onSuccess={() => setIsFormOpen(false)}
+                        slug={profile.slug}
                     />
                 </div>
             )}

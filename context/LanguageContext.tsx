@@ -42,6 +42,7 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
           .then(data => {
             console.log('user_lang_data', data);
             setProfileLanguages(data.languages);
+            setLanguage(data.languages[0]);
           })
           .catch(err => console.error("Помилка завантаження:", err));
   }, [token])

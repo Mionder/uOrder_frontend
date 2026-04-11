@@ -2,8 +2,9 @@
 import { useState, useEffect } from "react";
 import { useCategoryForm } from "./use-category-form";
 import { useLanguage } from "@/context/LanguageContext";
+import { refreshMenu } from "@/actions";
 
-export const AddCategoryForm = ({ categoriesAmount, lang, onSuccess }: any) => {
+export const AddCategoryForm = ({ categoriesAmount, lang, onSuccess, slug }: any) => {
     const { createCategory, loading, error } = useCategoryForm();
     const { tr } = useLanguage();
     
@@ -50,7 +51,7 @@ export const AddCategoryForm = ({ categoriesAmount, lang, onSuccess }: any) => {
         const res = await createCategory(form);
         if (res) {
             onSuccess?.();
-            window.location.reload(); // або твій трігер рефетчу
+            await refreshMenu(slug);
         }
     };
 

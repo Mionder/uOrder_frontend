@@ -102,19 +102,15 @@ export default function CreateMenuItemForm({ categories, setShowCreateModal, slu
       });
 
       if (res.ok) {
-        alert('Страву створено!');
         await refreshMenu(slug);
         setShowCreateModal(false);
       }
     } catch (error) {
       console.error("Помилка:", error);
-      alert('Щось пішло не так');
     } finally {
       setLoading(false);
     }
   };
-
-  console.log('categories', categories, t(categories[0].name));
 
   const handleImageChange = (e: any) => {
     const file = e.target.files[0];
