@@ -17,7 +17,7 @@ export default function DemoMenuPage() {
         categories={DEMO_DATA.categories} 
         refs={refs} 
         tenant={DEMO_DATA} 
-        className={'pt-18'}
+        className={'pt-13 md:pt-18'}
       />
 
       <div className="mt-8 space-y-12">
