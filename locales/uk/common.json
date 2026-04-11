@@ -131,6 +131,7 @@
     "address_placeholder": "Адреса",
     "working_hours_placeholder": "Графік",
     "save": "Зберегти зміни",
+    "currency_label": "Валюта",
     "save_loading": "Збереження..." ,
     "qr_generator": {
       "title": "QR Code Меню",

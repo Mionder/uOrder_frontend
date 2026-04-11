@@ -23,7 +23,7 @@ export const CategoriesAdmin = ({ categories: initialCategories, profile }: any)
     };
 
     return (
-        <div className="mx-auto max-w-4xl p-6">
+        <div className="mx-auto max-w-4xl md:p-6">
             <div className="flex flex-col gap-4 md:flex-row md:items-center justify-between mb-8">
                 <div>
                     <h1 className="text-2xl font-bold text-gray-900">{tr('categories_page.title')}</h1>

@@ -208,7 +208,7 @@ const calculateYearlyPrice = (basePrice: number) => {
 
       {/* FOOTER */}
 <footer className="py-20 px-6 border-t border-gray-100 bg-white">
-  <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-12">
+  <div className="max-w-6xl mx-auto flex flex-col gap-8 md:grid md:grid-cols-4 md:gap-12">
     {/* Лого та Слоган */}
     <div className="col-span-2 md:col-span-1">
       <div className="text-2xl font-black mb-6 italic tracking-tighter">uOrder.</div>

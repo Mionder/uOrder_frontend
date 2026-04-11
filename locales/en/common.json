@@ -129,6 +129,7 @@
     "description_label": "Description",
     "phone_label": "Phone Number",
     "address_placeholder": "Address",
+    "currency_label": "Currency",
     "working_hours_placeholder": "Schedule",
     "save": "Save Changes",
     "save_loading": "Saving...",

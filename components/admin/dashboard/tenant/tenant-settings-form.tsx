@@ -3,7 +3,7 @@
 import { refreshMenu } from '@/actions';
 import QrGenerator from '@/components/qr-generator';
 import { useLanguage } from '@/context/LanguageContext';
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Loader } from '../../ui/loader';
 
 const CURRENCIES = [
@@ -98,7 +98,7 @@ export default function TenantSettingsForm({ loading, setLoading, fetching, setF
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-gray-50 min-h-screen">
+    <div className="max-w-3xl mx-auto md:p-6 bg-gray-50 min-h-screen">
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded-xl shadow-sm space-y-6">
         <h1 className="text-2xl font-bold text-gray-800">{tr('tenant_settings.title')}</h1>
         
@@ -221,8 +221,11 @@ export default function TenantSettingsForm({ loading, setLoading, fetching, setF
               {
                 profileLanguages.map((lang: any) => {
                   return (
-                    <input key={`address_key_${lang}`} name={`address_${lang}`} defaultValue={t(profile.address)} placeholder={`${tr('tenant_settings.address_placeholder')} (${lang})`} className="border rounded p-2" />
-                  )
+                    <div>
+                      <label className="block text-sm font-medium">{tr('tenant_settings.address_placeholder')} ({lang})</label>
+                      <input key={`address_key_${lang}`} name={`address_${lang}`} defaultValue={t(profile.address)} placeholder={`${tr('tenant_settings.address_placeholder')} (${lang})`} className="border rounded p-2" />
+                    </div>
+                    )
                 })
               }
             </div>
@@ -231,7 +234,10 @@ export default function TenantSettingsForm({ loading, setLoading, fetching, setF
             <div className={`grid grid-cols-1 md:grid-cols-${profileLanguages.length} gap-4`}>
               { profileLanguages.map((lang: any) => {
                   return (
-                    <input key={`hours_key_${lang}`} name={`hours_${lang}`} defaultValue={t(profile.workingHours)} placeholder={`${tr('tenant_settings.working_hours_placeholder')} (${lang})`} className="border rounded p-2" />
+                    <div>
+                      <label className="block text-sm font-medium">{tr('tenant_settings.working_hours_placeholder')} ({lang})</label>
+                      <input key={`hours_key_${lang}`} name={`hours_${lang}`} defaultValue={t(profile.workingHours)} placeholder={`${tr('tenant_settings.working_hours_placeholder')} (${lang})`} className="border rounded p-2" />
+                    </div>
                   )
                 })
               }
