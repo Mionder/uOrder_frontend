@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
@@ -28,7 +28,10 @@ export const metadata: Metadata = {
     template: '%s | uOrder.'
   },
   description: 'uOrder. — найшвидший та найстильніший спосіб створити онлайн-меню для ресторану, кафе чи бару. Зручне керування, миттєве завантаження.',
-  
+  other: {
+    'color-scheme': 'light only',
+    'supported-color-schemes': 'light',
+  },
   // Колір теми для мобільних браузерів (Safari/Chrome)
   themeColor: '#000000',
 
@@ -71,6 +74,11 @@ export const metadata: Metadata = {
     statusBarStyle: 'black-translucent',
     title: 'uOrder.',
   },
+}
+
+export const viewport: Viewport = {
+  themeColor: '#ffffff', // Колір статус-бару (верхня панель у браузері телефону)
+  colorScheme: 'light',
 }
 
 export default function RootLayout({
