@@ -1,5 +1,5 @@
 export const addMenuItemRequest = async (data: any, token: string): Promise<any> => {
-  const res = await fetch('http://localhost:3000/v1/admin/menu', {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/admin/menu`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

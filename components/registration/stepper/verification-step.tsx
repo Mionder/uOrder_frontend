@@ -39,7 +39,7 @@ export const VerificationStep = ({ email, token }: { email: string, token: strin
 
     const resendCode = async () => {
         try {
-            const res = await fetch('http://localhost:3000/v1/auth/resend-code', {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/auth/resend-code`, {
                 method: 'POST',
                 headers: { 
                     'Authorization': `Bearer ${token}`,
@@ -60,7 +60,7 @@ export const VerificationStep = ({ email, token }: { email: string, token: strin
         const fullCode = code.join('');
         
         try {
-            const res = await fetch('http://localhost:3000/v1/auth/verify-email', {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/auth/verify-email`, {
                 method: 'POST',
                 headers: { 
                     'Authorization': `Bearer ${token}`,

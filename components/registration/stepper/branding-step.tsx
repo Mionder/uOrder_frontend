@@ -21,7 +21,7 @@ export const StepBranding = ({ onNext, token }: any) => {
                 const uploadData = new FormData();
                 uploadData.append('image', logoFile);
 
-                const uploadRes = await fetch('http://localhost:3000/v1/admin/tenant/logo', {
+                const uploadRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/admin/tenant/logo`, {
                 method: 'POST',
                 headers: { 'Authorization': `Bearer ${token}` },
                 body: uploadData,
@@ -37,7 +37,7 @@ export const StepBranding = ({ onNext, token }: any) => {
                 mainColor: formData.get('mainColor') as string,
             }
 
-            const res = await fetch('http://localhost:3000/v1/admin/tenant/settings', {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/admin/tenant/settings`, {
                 method: 'PATCH',
                 headers: {
                 'Authorization': `Bearer ${token}`,

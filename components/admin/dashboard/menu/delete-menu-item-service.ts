@@ -3,7 +3,7 @@ import { useAuth } from "@/context/AuthContext";
 
 export const deleteMenuItemRequest = async (id: string): Promise<any> => {
     const { token } = useAuth();
-    const res = await fetch(`http://localhost:3000/v1/admin/menu/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/admin/menu/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',

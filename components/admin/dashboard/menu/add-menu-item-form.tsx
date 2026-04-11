@@ -58,7 +58,7 @@ export default function CreateMenuItemForm({ categories, setShowCreateModal, slu
         const uploadData = new FormData();
         uploadData.append('image', imageFile);
 
-        const uploadRes = await fetch('http://localhost:3000/v1/admin/menu/upload', {
+        const uploadRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/admin/menu/upload`, {
           method: 'POST',
           headers: { 'Authorization': `Bearer ${token}` },
           body: uploadData,
@@ -92,7 +92,7 @@ export default function CreateMenuItemForm({ categories, setShowCreateModal, slu
         tenant: { connect: { id: 'temp' } }
       };
 
-      const res = await fetch('http://localhost:3000/v1/admin/menu', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/admin/menu`, {
         method: 'POST',
         headers: { 
           'Authorization': `Bearer ${token}`,

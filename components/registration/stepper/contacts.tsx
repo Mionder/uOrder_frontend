@@ -31,7 +31,7 @@ export const ContactsStep = ({ selectedLangs, token, onNext }: any) => {
         };
 
         try {
-            const res = await fetch('http://localhost:3000/v1/admin/tenant/settings', {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/admin/tenant/settings`, {
                 method: 'PATCH',
                 headers: {
                     'Authorization': `Bearer ${token}`,

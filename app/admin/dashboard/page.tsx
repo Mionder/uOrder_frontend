@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation';
 
 async function getCategories(token: string | null) {
   if (!token) return;
-  const res = await fetch('http://localhost:3000/v1/admin/categories', {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/admin/categories`, {
     headers: {
       'Authorization': `Bearer ${token}`, // Токен беремо з кук (cookies())
     },
@@ -15,7 +15,7 @@ async function getCategories(token: string | null) {
 
 async function getTreeMenu(token: string | null) {
   if (!token) return;
-  const res = await fetch(`http://localhost:3000/v1/admin/categories/menu-tree/`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/admin/categories/menu-tree/`, {
     headers: {
       'Authorization': `Bearer ${token}`, // Токен беремо з кук (cookies())
     },

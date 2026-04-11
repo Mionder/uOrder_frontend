@@ -1,7 +1,7 @@
 import { LoginDto, AuthResponse } from './types';
 
 export const loginRequest = async (data: LoginDto): Promise<AuthResponse> => {
-  const res = await fetch('http://localhost:3000/v1/auth/login', {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/auth/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

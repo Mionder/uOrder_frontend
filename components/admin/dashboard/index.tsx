@@ -50,10 +50,10 @@ export const AdminDashboard = ({ categories, menuTree, token }: any) => {
     useEffect(() => {
         // Завантажуємо профілі та статистику паралельно
         Promise.all([
-            fetch('http://localhost:3000/v1/admin/tenant/me', {
+            fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/admin/tenant/me`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             }).then(res => res.json()),
-            fetch('http://localhost:3000/v1/admin/tenant/stats', {
+            fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/admin/tenant/stats`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             }).then(res => res.json())
         ])

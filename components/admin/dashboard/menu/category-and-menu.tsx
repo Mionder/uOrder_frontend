@@ -13,7 +13,7 @@ export const CategoryAndMenu = ({ tenant }: any) => {
       const hasVisited = sessionStorage.getItem(`v_${tenant.slug}`);
       
       if (!hasVisited) {
-        fetch(`http://localhost:3000/v1/public/menu/${tenant.slug}/view`, { method: 'POST' });
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/public/menu/${tenant.slug}/view`, { method: 'POST' });
         sessionStorage.setItem(`v_${tenant.slug}`, 'true');
       }
     }, [tenant.slug]);

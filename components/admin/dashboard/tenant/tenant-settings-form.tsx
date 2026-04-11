@@ -25,7 +25,7 @@ export default function TenantSettingsForm({ loading, setLoading, fetching, setF
         const uploadData = new FormData();
         uploadData.append('image', logoFile);
 
-        const uploadRes = await fetch('http://localhost:3000/v1/admin/tenant/logo', {
+        const uploadRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/admin/tenant/logo`, {
           method: 'POST',
           headers: { 'Authorization': `Bearer ${token}` },
           body: uploadData,
@@ -57,7 +57,7 @@ export default function TenantSettingsForm({ loading, setLoading, fetching, setF
         isActive: profile.isActive // зберігаємо поточний статус
       };
 
-      const res = await fetch('http://localhost:3000/v1/admin/tenant/settings', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/admin/tenant/settings`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${token}`,

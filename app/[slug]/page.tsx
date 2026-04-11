@@ -6,7 +6,7 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 
 async function getPublicMenu(slug: string) {
-  const res = await fetch(`http://localhost:3000/v1/public/menu/${slug}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/public/menu/${slug}`, {
     next: { revalidate: 300 } // Кешуємо меню на 5 хвилин
   });
 

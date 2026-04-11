@@ -12,7 +12,7 @@ export default function QrGenerator({ restaurant, token }: any) {
   const handleGenerate = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:3000/v1/auth/${restaurant.id}/generate-qr`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/auth/${restaurant.id}/generate-qr`, {
         method: 'PATCH',
         headers: { 
           'Authorization': `Bearer ${token}`,

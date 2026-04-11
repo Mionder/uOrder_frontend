@@ -11,7 +11,7 @@ export const DraggableMenuItem = ({ item, index, token, slug, setSelectedItem }:
   const handleDelete = async (e: React.MouseEvent) => {
     e.stopPropagation();
     if(!confirm(`Видалити страву "${t(item.name)}"?`)) return;
-    const res = await fetch(`http://localhost:3000/v1/admin/menu/${item.id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/admin/menu/${item.id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
     });

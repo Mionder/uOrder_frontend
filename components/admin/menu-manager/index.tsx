@@ -96,7 +96,7 @@ const onDragEnd = async (result: DropResult) => {
 
     // 5. Відправка на бекенд (PATCH /v1/admin/menu/reorder)
     try {
-      const response = await fetch('http://localhost:3000/v1/admin/menu/reorder', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/admin/menu/reorder`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -121,7 +121,7 @@ const onDragEnd = async (result: DropResult) => {
 
 const onSave = async (id: string, data: any) => {
     try {
-        const response = await fetch(`http://localhost:3000/v1/admin/menu/${id}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/admin/menu/${id}`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${token}`,
