@@ -1,6 +1,7 @@
 export const DEMO_DATA = {
   name: "Napoli Pizza & Pasta",
   slug: "demo",
+  currency: 'EUR', 
   mainColor: "#FF4500",
   logo: "https://images.pexels.com/photos/32906967/pexels-photo-32906967.jpeg",
   phone: "+380 97 123 45 67",

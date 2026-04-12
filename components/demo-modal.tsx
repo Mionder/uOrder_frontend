@@ -1,7 +1,7 @@
 // Спрощений приклад компонента DemoModal
 export const DemoModal = ({ isOpen, onClose }: any) => {
   return (
-    <div className="fixed inset-0 z-[800] bg-black/90 backdrop-blur-xl flex items-center justify-center p-4">
+    <div onClick={onClose} className="fixed inset-0 z-[800] bg-black/90 backdrop-blur-xl flex items-center justify-center p-4">
       <button onClick={onClose} className="absolute top-8 right-8 text-white/50 hover:text-white font-black uppercase text-xs tracking-widest">
         Закрити [ESC]
       </button>
