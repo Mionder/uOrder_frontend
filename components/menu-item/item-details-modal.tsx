@@ -17,7 +17,10 @@ const getSpicinessLabel = (id: string) => {
       {/* Overlay */}
       <div 
         className="absolute inset-0 bg-black/40 backdrop-blur-sm animate-in fade-in duration-300"
-        onClick={onClose}
+        onClick={(e) => {
+            e.stopPropagation(); // Зупиняє подію тут
+            onClose();
+        }}
       />
       
       {/* Content */}
@@ -25,7 +28,10 @@ const getSpicinessLabel = (id: string) => {
         
         {/* Close Button */}
         <button 
-          onClick={onClose}
+            onClick={(e) => {
+                e.stopPropagation(); // Зупиняє подію тут
+                onClose();
+            }}
           className="absolute top-5 right-5 z-10 bg-white/80 backdrop-blur-md p-2 rounded-full shadow-lg active:scale-90 transition-transform"
         >
           <X size={20} className="text-black" />
