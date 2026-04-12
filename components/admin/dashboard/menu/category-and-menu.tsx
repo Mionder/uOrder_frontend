@@ -59,7 +59,7 @@ export const CategoryAndMenu = ({ tenant }: any) => {
                     <CategoryTitle color={tenant.mainColor} category={category} /> 
                     <div className="space-y-4">
                       {category.items.map((item: any) => (
-                        <MenuItem key={item.id} info={item} baseColor={tenant.mainColor} />
+                        <MenuItem key={item.id} info={item} baseColor={tenant.mainColor} currency={tenant.currency} />
                       ))}
                     </div>
                   </section>

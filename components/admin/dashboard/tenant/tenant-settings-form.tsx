@@ -13,8 +13,10 @@ const CURRENCIES = [
   { id: 'PLN', symbol: 'Zl', label: 'Zloty' },
 ];
 
-export default function TenantSettingsForm({ loading, setLoading, fetching, setFetching, profile, setProfile, logoPreview, setLogoPreview, token }: any) {
+export default function TenantSettingsForm({ fetching, setFetching, profile, setProfile, logoPreview, setLogoPreview, token }: any) {
   // 1. Завантажуємо поточні дані при стартi
+  const [loading, setLoading]=  useState<boolean>(false);
+
   const { profileLanguages, t, tr } = useLanguage();
   const [currency, setCurrency] = useState(profile?.currency || 'PLN');
   const handleSubmit = async (e: any) => {
