@@ -3,6 +3,8 @@ import { useLanguage } from "@/context/LanguageContext";
 import { LikeButton } from "../admin/dashboard/menu/like-button";
 import { ALLERGENS } from "@/config/menu-constants";
 import { Flame, Info } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ItemDetailsModal } from "./item-details-modal";
 
 const CURRENCIES = [
   { id: 'UAH', symbol: '₴', label: 'Hryvnia' },
@@ -13,6 +15,12 @@ const CURRENCIES = [
 
 export const MenuItem = ({ info, baseColor, currency }: any) => {
   const { t, tr } = useLanguage();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (isModalOpen) document.body.style.overflow = 'hidden';
+    else document.body.style.overflow = 'unset';
+  }, [isModalOpen]);
   
   const renderPrice = () => {
     return info.variants?.length > 0 ? 
@@ -24,8 +32,10 @@ export const MenuItem = ({ info, baseColor, currency }: any) => {
     return CURRENCIES.find(c => c.id === currencyId)?.symbol || '';
   };
 
+  const currencySymbol = getCurrencySymbol(currency);
+
   return (
-    <div className="w-full px-4 mb-4">
+    <div onClick={() => setIsModalOpen(true)} className="w-full px-4 mb-4">
       <div className="bg-white rounded-4xl p-4 border border-gray-100 shadow-soft flex gap-5 items-stretch transition-all active:scale-[0.98]">
         
         {/* Фото-блок */}
@@ -97,7 +107,7 @@ export const MenuItem = ({ info, baseColor, currency }: any) => {
                   <span className="text-[9px] uppercase font-black text-gray-300 tracking-widest mr-0.5">{tr('menu_item.from')}</span>
                 )}
                 {renderPrice()}
-                <span className="text-[12px] font-black ml-0.5 uppercase">{getCurrencySymbol(currency)}</span>
+                <span className="text-[12px] font-black ml-0.5 uppercase">{currencySymbol}</span>
               </div>
             </div>
 
@@ -112,6 +122,13 @@ export const MenuItem = ({ info, baseColor, currency }: any) => {
           </div>
         </div>
       </div>
+      <ItemDetailsModal 
+        info={info} 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        baseColor={baseColor}
+        currencySymbol={currencySymbol}
+      />
     </div>
   )
 }
