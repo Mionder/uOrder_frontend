@@ -58,7 +58,7 @@ export const ALLERGENS = [
 ];
 
 export const SPICINESS_LEVELS = [
-  { id: 'NONE', label: { uk: 'Не гостре', en: 'Not spicy' }, color: 'text-gray-400' },
-  { id: 'MEDIUM', label: { uk: 'Середньо', en: 'Medium' }, color: 'text-orange-500' },
-  { id: 'HOT', label: { uk: 'Гостро', en: 'Hot' }, color: 'text-red-500' },
+  { id: 'NONE', label: { uk: 'Не гостре', en: 'Not spicy', pl: 'Łagodne' }, color: 'text-gray-400' },
+  { id: 'MEDIUM', label: { uk: 'Середньо', en: 'Medium', pl: 'Średnio ostre' }, color: 'text-orange-500' },
+  { id: 'HOT', label: { uk: 'Гостро', en: 'Hot', pl: 'Ostre' }, color: 'text-red-500' },
 ];

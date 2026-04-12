@@ -46,7 +46,8 @@
     "update": "Odśwież menu"
   },
   "menu_item": {
-    "from": "od"
+    "from": "od",
+    "choose_size": "Wybierz rozmiar"
   },
   "billing": {
     "back_button": "Wstecz",

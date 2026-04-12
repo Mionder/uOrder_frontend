@@ -1,13 +1,15 @@
 'use client';
 import { useLanguage } from "@/context/LanguageContext";
-import { ALLERGENS } from "@/config/menu-constants";
+import { ALLERGENS, SPICINESS_LEVELS } from "@/config/menu-constants";
 import { Flame, X, Scale, Leaf } from "lucide-react";
 import { useState, useEffect } from "react";
 
 // Компонент модалки (Bottom Sheet style)
 export const ItemDetailsModal = ({ info, isOpen, onClose, baseColor, currencySymbol }: any) => {
-  const { t, tr } = useLanguage();
-
+  const { t, tr, language } = useLanguage();
+const getSpicinessLabel = (id: string) => {
+  return SPICINESS_LEVELS.find(item => item.id === id)?.label[language as 'uk' | 'en' | 'pl'] || '';
+};
   if (!isOpen) return null;
 
   return (
@@ -56,7 +58,7 @@ export const ItemDetailsModal = ({ info, isOpen, onClose, baseColor, currencySym
                   {info.spiciness !== 'NONE' && (
                      <span className="flex items-center gap-1 text-xs font-bold text-red-500 uppercase tracking-widest bg-red-50 px-2 py-1 rounded-lg">
                         <Flame size={12} className="fill-red-500" /> 
-                        {info.spiciness === 'HOT' ? tr('menu_item.spiciness_hot') : tr('menu_item.spiciness_medium')}
+                        {info.spiciness === 'HOT' ? getSpicinessLabel('HOT') : getSpicinessLabel('MEDIUM')}
                      </span>
                   )}
                 </div>

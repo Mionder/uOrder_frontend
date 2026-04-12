@@ -46,7 +46,8 @@
     "update": "Refresh Menu"
   },
   "menu_item": {
-    "from": "from"
+    "from": "from",
+    "choose_size": "Choose a size"
   },
   "billing": {
     "back_button": "Back",

@@ -12,7 +12,7 @@ export const CategoriesList = ({ categories, refs, tenant, activeCategoryId, cla
   };
 
     return (
-        <div className={`sticky top-0 z-999 left-0 px-4 w-full border-b ${className}`}>
+        <div className={`sticky top-0 z-99 left-0 px-4 w-full border-b ${className}`}>
             <div className="overflow-hidden pt-2 pb-4 bg-white">
                     <header className="flex gap-3 p-4 text-center mt-1">
                         {tenant.logo && (

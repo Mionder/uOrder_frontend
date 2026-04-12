@@ -46,7 +46,8 @@
     "update": "Оновити меню"
   },
   "menu_item": {
-    "from": "від"
+    "from": "від",
+    "choose_size": "Розмір на вибір"
   },
   "billing": {
     "back_button": "Назад",
