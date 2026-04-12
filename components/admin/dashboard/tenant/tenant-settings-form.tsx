@@ -194,9 +194,9 @@ export default function TenantSettingsForm({ fetching, setFetching, profile, set
                 <button
                   key={c.id}
                   type="button"
-                  onClick={() => setCurrency(c.symbol)}
+                  onClick={() => setCurrency(c.id)}
                   className={`flex-1 py-2 px-1 rounded-md text-sm font-bold transition-all ${
-                    currency === c.symbol 
+                    currency === c.id 
                       ? "bg-white text-black shadow-sm" 
                       : "text-gray-500 hover:text-gray-700"
                   }`}
