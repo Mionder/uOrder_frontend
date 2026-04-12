@@ -34,9 +34,6 @@ export default async function DashboardAdminPage() {
     const categories = await getCategories(token!);
     const menuTree = await getTreeMenu(token!);
 
-    console.log('menuTree', menuTree)
-    
-
     return (
         <div>
             <LanguageSwitcher />

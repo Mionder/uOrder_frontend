@@ -51,7 +51,6 @@ export const StepBranding = ({ onNext, token }: any) => {
                 onNext();
             }
         } catch (err) {
-            console.log('Got error', err);
             setLoading(false);
         }
      }

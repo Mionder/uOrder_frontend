@@ -87,7 +87,7 @@ export default function TenantSettingsForm({ fetching, setFetching, profile, set
        // alert(`Помилка: ${err.message || 'Не вдалося оновити'}`);
       }
     } catch (error) {
-      alert('Помилка мережі');
+      //alert('Помилка мережі');
     } finally {
       setLoading(false);
     }

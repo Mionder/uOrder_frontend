@@ -49,7 +49,6 @@ export const VerificationStep = ({ email, token }: { email: string, token: strin
                 body: JSON.stringify({ id: '68fb2e9b-e63d-4cc6-aab4-31b6d8596c5f', email: 'sergejjolejj@gmail.com' }),
             });
 
-            console.log(res);
         } catch (err) {
             console.error(err);
         }

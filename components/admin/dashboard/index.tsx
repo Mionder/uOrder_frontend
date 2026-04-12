@@ -80,8 +80,6 @@ export const AdminDashboard = ({ categories, menuTree, token }: any) => {
         { id: 4, label: tr('dashboard.payment'), icon: CreditCard },
     ];
 
-    console.log('stats', stats, 'profile', profile);
-
     if (fetching) return <div className="flex h-screen items-center justify-center"><Loader /></div>;
 
     return (

@@ -4,7 +4,6 @@ import { Globe } from "lucide-react";
 
 export const LanguageSwitcher = ({ languages }: { languages?: string[] }) => {
   const { language, setLanguage, profileLanguages } = useLanguage();
-  console.log('languages', languages, 'profile', profileLanguages, 'lang =', language);
 
   // Використовуємо або передані мови, або мови з профілю
   const availableLanguages = languages || profileLanguages || [];

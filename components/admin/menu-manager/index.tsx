@@ -109,7 +109,6 @@ const onDragEnd = async (result: DropResult) => {
         throw new Error('Failed to update reorder on server');
       }
       
-      console.log('Successfully reordered items');
       await refreshMenu(slug);
     } catch (err) {
       console.error("Помилка синхронізації:", err);
@@ -131,9 +130,8 @@ const onSave = async (id: string, data: any) => {
       });
 
       if (response.ok) {
-        alert('Edited successfully');
+        //alert('Edited successfully');
 
-        console.log('response_data', response);
         await refreshMenu(slug);
       };
     } catch (err) {

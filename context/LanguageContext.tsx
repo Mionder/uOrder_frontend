@@ -34,13 +34,11 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
 
   useEffect(() => {
     if (!token) return;
-    console.log('token_before_fetch', token);
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/admin/tenant/language`, {
           headers: { 'Authorization': `Bearer ${token}` }
         })
           .then(res => res.json())
           .then(data => {
-            console.log('user_lang_data', data);
             setProfileLanguages(data.languages);
             setLanguage(data.languages[0]);
           })

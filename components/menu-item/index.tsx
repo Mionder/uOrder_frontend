@@ -20,6 +20,10 @@ export const MenuItem = ({ info, baseColor, currency }: any) => {
       : info.basePrice;
   };
 
+  const getCurrencySymbol = (currencyId: string) => {
+    return CURRENCIES.find(c => c.id === currencyId)?.symbol || '';
+  };
+
   return (
     <div className="w-full px-4 mb-4">
       <div className="bg-white rounded-4xl p-4 border border-gray-100 shadow-soft flex gap-5 items-stretch transition-all active:scale-[0.98]">
@@ -93,7 +97,7 @@ export const MenuItem = ({ info, baseColor, currency }: any) => {
                   <span className="text-[9px] uppercase font-black text-gray-300 tracking-widest mr-0.5">{tr('menu_item.from')}</span>
                 )}
                 {renderPrice()}
-                <span className="text-[12px] font-black ml-0.5 uppercase">{currency}</span>
+                <span className="text-[12px] font-black ml-0.5 uppercase">{getCurrencySymbol(currency)}</span>
               </div>
             </div>
 

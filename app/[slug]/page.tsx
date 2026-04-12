@@ -63,14 +63,11 @@ export default async function PublicMenuPage({
   params: Promise<{ slug: string }> // Тепер це Promise
 }) {
   const { slug } = await params;
-  console.log('slug', slug);
   const tenant = await getPublicMenu(slug);
 
   if (!tenant) {
     notFound(); // Покаже стандартну 404 сторінку
   }
-
-  console.log('tenant_my', tenant);
 
   return (
     <main className='!bg-white !text-black' style={{ '--brand-color': tenant.mainColor } as React.CSSProperties}>

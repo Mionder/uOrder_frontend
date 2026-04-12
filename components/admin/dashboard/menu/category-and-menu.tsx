@@ -7,7 +7,6 @@ import { CategoriesList } from "@/components/categories-list";
 export const CategoryAndMenu = ({ tenant }: any) => {
     const refs = useRef<any>({});
     const [activeCategoryId, setActiveCategoryId] = useState<string | null>(null);
-    console.log('activeCategoryId', activeCategoryId);
 
     useEffect(() => {
       const hasVisited = sessionStorage.getItem(`v_${tenant.slug}`);
