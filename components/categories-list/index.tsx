@@ -22,9 +22,9 @@ export const CategoriesList = ({ categories, refs, tenant, activeCategoryId, cla
                                 className="max-w-[80px] max-h-[80px] w-full h-auto rounded-[12px]" 
                             />
                         )}
-                        <div className="flex flex-col gap-2 items-start">
+                        <div className="flex flex-col gap-2 items-center">
                             <h1 className="text-2xl font-black italic tracking-tighter">{tenant.name}</h1>
-                            <p className="text-color-gray-500 text-sm max-w-[220px]">{t(tenant.description)}</p>
+                            <p className="text-color-gray-500 text-left text-sm max-w-[220px]">{t(tenant.description)}</p>
                         </div>
                         
                     </header>

@@ -69,7 +69,7 @@ const getSpicinessLabel = (id: string) => {
                   )}
                 </div>
               </div>
-              <div className="text-right">
+              <div className="text-right min-w-fit">
                 <span style={{ color: baseColor }} className="text-2xl font-black tracking-tighter">
                    {info.basePrice || Math.min(...info.variants?.map((v: any) => v.price))} {currencySymbol}
                 </span>
