@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useLanguage } from '@/context/LanguageContext';
+import { LanguageSwitcher } from '@/components/language-switcher';
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState('');
@@ -35,6 +36,9 @@ export default function ForgotPasswordPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-6 bg-gray-50">
+            <div className="absolute right-3 top-3 md:right-8 md:top-8 z-99">
+              <LanguageSwitcher languages={['pl', 'uk', 'en']} />
+            </div>
       <form onSubmit={handleSubmit} className="max-w-sm w-full space-y-6 bg-white p-8 rounded-3xl shadow-xl">
         <h1 className="text-2xl font-black">{tr('forgot_password.title')}</h1>
         <p className="text-sm text-gray-500 font-medium">{tr('forgot_password.subtitle')}</p>

@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { Eye, EyeOff, CheckCircle2, AlertCircle } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Loader } from '@/components/admin/ui/loader';
+import { LanguageSwitcher } from '@/components/language-switcher';
 
 function ResetPasswordContent() {
   const router = useRouter();
@@ -69,6 +70,9 @@ function ResetPasswordContent() {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-6 bg-gray-50">
+            <div className="absolute right-3 top-3 md:right-8 md:top-8 z-99">
+              <LanguageSwitcher languages={['pl', 'uk', 'en']} />
+            </div>
       <div className="max-w-md w-full bg-white p-8 rounded-[2.5rem] shadow-2xl shadow-black/5">
         <div className="mb-8 text-center">
           <div className="w-16 h-16 bg-black text-white rounded-2xl flex items-center justify-center mx-auto mb-4">

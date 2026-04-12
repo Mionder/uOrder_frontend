@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Check, CreditCard, Zap, ShieldCheck, Clock, ArrowLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useLanguage } from '@/context/LanguageContext';
+import { LanguageSwitcher } from '@/components/language-switcher';
 
 
 const PLANS = [
@@ -54,6 +55,9 @@ export default function BillingPage() {
 
   return (
     <div className="p-4 md:p-8 max-w-6xl mx-auto min-h-screen bg-white">
+            <div className="absolute right-3 top-3 md:right-8 md:top-8 z-99">
+              <LanguageSwitcher languages={['pl', 'uk', 'en']} />
+            </div>
       <button onClick={() => router.back()} className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-gray-400 hover:text-black transition-all mb-8">
         <ArrowLeft size={14} /> {tr('billing.back_button')}
       </button>
