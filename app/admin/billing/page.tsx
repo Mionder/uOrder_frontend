@@ -59,7 +59,8 @@ export default function BillingPage() {
         body: JSON.stringify({ 
           plan: planId,
           cycle: billingCycle,
-          currency: currencyData.label.toUpperCase() // Передаємо валюту на бекенд
+          currency: currencyData.label.toUpperCase() === 'ГРН' ? 'UAH' : 
+              currencyData.label.toUpperCase() === 'ZŁ' ? 'PLN' : 'USD'
         }),
       });
 

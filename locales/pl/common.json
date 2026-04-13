@@ -63,6 +63,17 @@
     "best_choice": "Najlepszy wybór",
     "period_month": "mies",
     "period_year": "rok",
+    "success": {
+      "title": "Płatność udana",
+      "message": "Twój plan został aktywowany. Wszystkie profesjonalne narzędzia uOrder są teraz do Twojej dyspozycji. Życzymy udanej sprzedaży!",
+      "go_dashboard": "Przejdź do panelu sterowania"
+    },
+    "error": {
+      "title": "Błąd płatności",
+      "message": "Niestety nie udało się sfinalizować transakcji. Sprawdź stan konta lub spróbuj innej metody płatności.",
+      "retry": "Spróbuj ponownie",
+      "support": "Skontaktuj się ze wsparciem"
+    },
     "plans": {
       "free": { "features": ["10 dań", "Kod QR", "Standardowe wsparcie"] },
       "base": { "features": ["Nielimitowane dania", "Analityka", "Własne kolory", "Wsparcie priorytetowe"] },
