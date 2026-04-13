@@ -6,7 +6,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { MenuManager } from "../../menu-manager";
 import { useState } from "react";
 
-export const MenuAdmin = ({ categories, menuTree, tenantSlug, setTab }: any) => {
+export const MenuAdmin = ({ categories, menuTree, tenantSlug, setTab, currencyId }: any) => {
     const { t } = useLanguage();
     const { token } = useAuth();
     const [showCreateModal, setShowCreateModal] = useState(false);
@@ -15,7 +15,7 @@ export const MenuAdmin = ({ categories, menuTree, tenantSlug, setTab }: any) => 
         <div className="max-w-3xl mx-auto">
             {
                 (token && !showCreateModal) && (
-                    <MenuManager initialData={menuTree} token={token} setShowCreateModal={setShowCreateModal} slug={tenantSlug} setTab={setTab} />
+                    <MenuManager initialData={menuTree} token={token} setShowCreateModal={setShowCreateModal} slug={tenantSlug} setTab={setTab} currencyId={currencyId} />
                 )
             }
 

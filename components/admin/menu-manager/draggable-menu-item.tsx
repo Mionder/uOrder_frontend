@@ -5,7 +5,7 @@ import { Pencil, Trash2, GripVertical, Image as ImageIcon } from 'lucide-react';
 import { MenuItem } from '@/types/menu';
 import { refreshMenu } from '@/actions';
 
-export const DraggableMenuItem = ({ item, index, token, slug, setSelectedItem }: any) => {
+export const DraggableMenuItem = ({ item, index, token, slug, setSelectedItem, currencySymbol }: any) => {
   const { t } = useLanguage();
 
   const handleDelete = async (e: React.MouseEvent) => {
@@ -59,7 +59,7 @@ export const DraggableMenuItem = ({ item, index, token, slug, setSelectedItem }:
           {/* Ціна: Ховаємо на дуже малих екранах або робимо компактною */}
           <div className="text-right shrink-0">
             <span className="font-black text-sm md:text-lg">{currentPrice}</span>
-            <span className="text-[10px] font-bold text-gray-400 ml-1">₴</span>
+            <span className="text-[10px] font-bold text-gray-400 ml-1">{currencySymbol}</span>
           </div>
 
           {/* Кнопки Дій: Більші відступи для мобільних */}

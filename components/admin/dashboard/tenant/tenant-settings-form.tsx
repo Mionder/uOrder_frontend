@@ -151,7 +151,6 @@ export default function TenantSettingsForm({ fetching, setFetching, profile, set
               name="slug"
               defaultValue={profile.slug}
               required
-              disabled
               className="flex-1 block w-full border border-gray-300 rounded-none rounded-r-md p-2 focus:ring-blue-500 focus:border-blue-500"
               placeholder="my-cool-restaurant"
             />

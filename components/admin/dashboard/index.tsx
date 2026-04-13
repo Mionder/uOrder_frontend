@@ -166,7 +166,7 @@ export const AdminDashboard = ({ categories, menuTree, token }: any) => {
                                 <DashboardStatsView profile={profile} stats={stats} onNavigate={selectTab} />
                             )}
                             {currentTab === 1 && <CategoriesAdmin categories={categories} profile={profile} />}
-                            {currentTab === 2 && <MenuAdmin categories={categories} menuTree={menuTree} tenantSlug={profile.slug} setTab={setCurrentTab} />}
+                            {currentTab === 2 && <MenuAdmin categories={categories} menuTree={menuTree} tenantSlug={profile.slug} setTab={setCurrentTab} currencyId={profile.currency} />}
                             {currentTab === 3 && <TenantSettingsForm profile={profile} token={token} logoPreview={logoPreview} />}
                         </div>
                     </div>

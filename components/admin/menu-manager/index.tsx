@@ -18,11 +18,23 @@ const reorder = (list: any[], startIndex: number, endIndex: number) => {
   return result;
 };
 
-export const MenuManager = ({ initialData, token, setShowCreateModal, slug, setTab }: { initialData: Category[], token: string, setShowCreateModal: any, slug: any, setTab: any }) => {
+const CURRENCIES = [
+  { id: 'UAH', symbol: '₴', label: 'Hryvnia' },
+  { id: 'USD', symbol: '$', label: 'Dollar' },
+  { id: 'EUR', symbol: '€', label: 'Euro' },
+  { id: 'PLN', symbol: 'Zl', label: 'Zloty' },
+];
+
+export const MenuManager = ({ initialData, token, setShowCreateModal, slug, setTab, currencyId }: { initialData: Category[], token: string, setShowCreateModal: any, slug: any, setTab: any, currencyId: any }) => {
   const { t, tr } = useLanguage();
   const [categories, setCategories] = useState<Category[]>(initialData);
   const [selectedItem, setSelectedItem] = useState<any>(null);
 
+      const getCurrencySymbol = (currencyId: string) => {
+      return CURRENCIES.find(c => c.id === currencyId)?.symbol || '';
+    };
+
+    const currencySymbol = getCurrencySymbol(currencyId);
   // Функція, яка спрацьовує, коли користувач відпускає елемент
 const onDragEnd = async (result: DropResult) => {
   const { destination, source, type } = result;
@@ -198,7 +210,7 @@ const onSave = async (id: string, data: any) => {
                       className={`space-y-3 min-h-[60px] rounded-2xl transition-all ${snapshot.isDraggingOver ? 'bg-gray-50 ring-2 ring-blue-100 ring-dashed' : ''}`}
                     >
                       {category.items.map((item, index) => (
-                        <DraggableMenuItem key={item.id} item={item} index={index} token={token} slug={slug} setSelectedItem={setSelectedItem} />
+                        <DraggableMenuItem key={item.id} item={item} index={index} token={token} slug={slug} setSelectedItem={setSelectedItem} currencySymbol={currencySymbol} />
                       ))}
                       {provided.placeholder}
                     </div>
