@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Check, Zap, ShieldCheck, Clock, ArrowLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useLanguage } from '@/context/LanguageContext';
@@ -8,6 +8,11 @@ import { LanguageSwitcher } from '@/components/language-switcher';
 export default function BillingPage() {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
   const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
+  const [currentSubscription, setCurrentSubscription] = useState<{plan: string, nextBillingDate: string | null}>({
+    plan: 'FREE',
+    nextBillingDate: null,
+  });
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
   const { tr, language } = useLanguage(); // Додаємо language для визначення валюти
 
@@ -40,10 +45,30 @@ export default function BillingPage() {
     },
   ];
 
-  const currentSubscription = {
-    plan: 'FREE',
-    expiresAt: null,
-  };
+  useEffect(() => {
+    const fetchTenantData = async () => {
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/tenants/me`, {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setCurrentSubscription({
+            plan: data.plan || 'FREE',
+            nextBillingDate: data.nextBillingDate || null
+          });
+        }
+      } catch (error) {
+        console.error("Failed to fetch tenant info", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTenantData();
+  }, []);
 
   const handleSubscribe = async (planId: string) => {
     if (planId === 'FREE' || planId === currentSubscription.plan) return;
@@ -113,8 +138,17 @@ export default function BillingPage() {
             <Zap className={currentSubscription.plan === 'FREE' ? "text-gray-200" : "text-blue-600 fill-blue-600"} size={40} />
           </div>
           <div>
-            <div className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-1">{tr('billing.current_plan')}</div>
-            <div className="text-2xl font-black uppercase italic tracking-tight">{currentSubscription.plan}</div>
+          <div className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-1">
+              {tr('billing.current_plan')}
+            </div>
+            <div className="text-2xl font-black uppercase italic tracking-tight">
+              {currentSubscription.plan}
+            </div>
+            {currentSubscription.nextBillingDate && (
+              <div className="text-[9px] font-bold text-gray-400 mt-1">
+                {tr('billing.next_payment')}: {new Date(currentSubscription.nextBillingDate).toLocaleDateString()}
+              </div>
+            )}         
           </div>
         </div>
         
