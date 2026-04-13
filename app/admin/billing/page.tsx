@@ -1,27 +1,26 @@
 'use client'
 import { useState } from 'react';
-import { Check, CreditCard, Zap, ShieldCheck, Clock, ArrowLeft } from 'lucide-react';
+import { Check, Zap, ShieldCheck, Clock, ArrowLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useLanguage } from '@/context/LanguageContext';
 import { LanguageSwitcher } from '@/components/language-switcher';
 
-
 const PLANS = [
   {
-    id: 'free',
+    id: 'FREE',
     name: 'Free',
     price: 0,
     features: ['10 страв', 'QR код', 'Стандартна підтримка'],
   },
   {
-    id: 'base',
+    id: 'BASIC',
     name: 'Base',
-    price: 500, // ціна в грн/міс
+    price: 500,
     features: ['Безліміт страв', 'Аналітика', 'Власні кольори', 'Пріоритетна підтримка'],
     popular: true,
   },
   {
-    id: 'pro',
+    id: 'PRO',
     name: 'Pro',
     price: 1000,
     features: ['Кілька закладів', 'Керування персоналом', 'AI генерація описів', 'Персональний менеджер'],
@@ -33,31 +32,81 @@ export default function BillingPage() {
   const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
   const router = useRouter();
   const { tr } = useLanguage();
-  // Імітація поточних даних ресторану (потім прийде з БД)
+
+  // В ідеалі ці дані мають приходити з useAuth або окремого запиту
   const currentSubscription = {
-    plan: 'free',
+    plan: 'FREE',
     expiresAt: null,
   };
 
-  const handleSubscribe = async (planId: string) => {
-    if (planId === 'free') return;
+const handleSubscribe = async (planId: string) => {
+    if (planId === 'FREE' || planId === currentSubscription.plan) return;
     
     setLoadingPlan(planId);
     
-    // ТУТ БУДЕ ЛОГІКА FONDY:
-    // 1. Запит на бекенд для створення Checkout URL
-    // 2. Редірект на сторінку оплати Fondy
-    console.log(`Підписка на ${planId} (${billingCycle})`);
-    
-    // Тимчасова затримка для ефекту
-    setTimeout(() => setLoadingPlan(null), 2000);
+    try {
+      // Використовуємо fetch з твоїм системним URL
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/payments/subscribe`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          // Не забудь про авторизацію, якщо вона вже прикручена (Bearrer token)
+          'Authorization': `Bearer ${localStorage.getItem('token')}` 
+        },
+        body: JSON.stringify({ 
+          plan: planId,
+          cycle: billingCycle 
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create payment session');
+      }
+
+      const data = await response.json();
+
+      // Створюємо форму для POST-редиректу
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = 'https://secure.wayforpay.com/pay';
+      form.acceptCharset = 'utf-8';
+
+      // Наповнюємо форму даними від бекенда
+      Object.entries(data).forEach(([key, value]) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        
+        // WayForPay очікує, що масиви будуть розділені крапкою з комою
+        if (Array.isArray(value)) {
+          input.value = value.join(';');
+        } else {
+          input.value = value?.toString() || '';
+        }
+        
+        form.appendChild(input);
+      });
+
+      document.body.appendChild(form);
+      form.submit();
+      
+      // Форма відправила запит, видаляємо її
+      document.body.removeChild(form);
+
+    } catch (error) {
+      console.error('Payment Error:', error);
+      alert('Сталася помилка при ініціалізації платежу. Спробуйте пізніше.');
+    } finally {
+      setLoadingPlan(null);
+    }
   };
 
   return (
     <div className="p-4 md:p-8 max-w-6xl mx-auto min-h-screen bg-white">
-            <div className="absolute right-3 top-3 md:right-8 md:top-8 z-99">
-              <LanguageSwitcher languages={['pl', 'uk', 'en']} />
-            </div>
+      <div className="absolute right-3 top-3 md:right-8 md:top-8 z-[99]">
+        <LanguageSwitcher languages={['pl', 'uk', 'en']} />
+      </div>
+
       <button onClick={() => router.back()} className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-gray-400 hover:text-black transition-all mb-8">
         <ArrowLeft size={14} /> {tr('billing.back_button')}
       </button>
@@ -71,7 +120,7 @@ export default function BillingPage() {
       <div className="bg-gray-50 border border-gray-100 rounded-[2.5rem] p-6 md:p-10 mb-12 flex flex-col md:flex-row justify-between items-center gap-8 shadow-sm">
         <div className="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
           <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-xl shadow-black/5">
-            <Zap className={currentSubscription.plan === 'free' ? "text-gray-200" : "text-blue-600 fill-blue-600"} size={40} />
+            <Zap className={currentSubscription.plan === 'FREE' ? "text-gray-200" : "text-blue-600 fill-blue-600"} size={40} />
           </div>
           <div>
             <div className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-1">{tr('billing.current_plan')}</div>
@@ -89,7 +138,7 @@ export default function BillingPage() {
         </div>
       </div>
 
-      {/* Перемикач */}
+      {/* Перемикач циклу */}
       <div className="flex justify-center mb-16">
         <div className="bg-gray-100 p-1.5 rounded-2xl flex items-center shadow-inner">
           <button onClick={() => setBillingCycle('monthly')} className={`px-8 py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${billingCycle === 'monthly' ? "bg-white shadow-md text-black" : "text-gray-400"}`}>{tr('billing.month')}</button>
@@ -99,7 +148,7 @@ export default function BillingPage() {
         </div>
       </div>
 
-      {/* Картки */}
+      {/* Картки планів */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
         {PLANS.map((plan) => {
           const isCurrent = currentSubscription.plan === plan.id;
@@ -134,7 +183,6 @@ export default function BillingPage() {
         })}
       </div>
 
-      {/* Безпека */}
       <div className="mt-16 text-center">
         <div className="flex items-center justify-center gap-6 opacity-30 grayscale mb-6">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Visa_Inc._logo_%282021%E2%80%93present%29.svg/250px-Visa_Inc._logo_%282021%E2%80%93present%29.svg.png" alt="Visa" className="h-4" />
@@ -143,6 +191,5 @@ export default function BillingPage() {
         <p className="text-[10px] font-bold text-gray-300 uppercase tracking-[2px]">{tr('billing.security')}</p>
       </div>
     </div>
-      
   );
 }
