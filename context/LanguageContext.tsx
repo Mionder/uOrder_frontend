@@ -13,7 +13,7 @@ interface LanguageContextType {
   setLanguage: (lang: string) => void;
   t: (data: any) => string; // Хелпер для виводу Json-полів (назва, опис)
   profileLanguages: string[];
-  tr: (data: string) => string;
+  tr: (data: string, options?: { returnObjects?: boolean }) => string;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -23,14 +23,27 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
   const { token } = useAuth();
   const [profileLanguages, setProfileLanguages] = useState<any>([]);
 
-  const tr = (key: string) => {
-    const keys = key.split('.');
-    let result = translationsVariants[language];
-    keys.forEach(k => {
-      result = result ? result[k] : key;
-    });
-    return result || key;
-  };
+const tr = (key: string, options?: { returnObjects?: boolean }) => {
+  const keys = key.split('.');
+  let result: any = translationsVariants[language];
+
+  for (const k of keys) {
+    if (result && result[k] !== undefined) {
+      result = result[k];
+    } else {
+      result = key; // Якщо шлях не знайдено, повертаємо сам ключ
+      break;
+    }
+  }
+
+  // Якщо ми не просимо об'єкт і результат виявився масивом або об'єктом,
+  // краще повернути ключ, щоб не "вистрелити в ногу" рендеру React
+  if (!options?.returnObjects && typeof result !== 'string') {
+    return key;
+  }
+
+  return result || key;
+};
 
   useEffect(() => {
     if (!token) return;

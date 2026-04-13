@@ -60,7 +60,14 @@
     "year": "Rok",
     "security": "Płatności chronione szyfrowaniem AES-256",
     "select_plan": "Wybierz plan",
-    "best_choice": "Najlepszy wybór"
+    "best_choice": "Najlepszy wybór",
+    "period_month": "mies",
+    "period_year": "rok",
+    "plans": {
+      "free": { "features": ["10 dań", "Kod QR", "Standardowe wsparcie"] },
+      "base": { "features": ["Nielimitowane dania", "Analityka", "Własne kolory", "Wsparcie priorytetowe"] },
+      "pro": { "features": ["Wiele lokalizacji", "Zarządzanie personelem", "Generowanie opisów AI", "Osobisty menedżer"] }
+    }
   },
   "dashboard_error": {
     "title": "Nie udało się załadować statystyk",

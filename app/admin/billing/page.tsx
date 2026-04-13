@@ -5,97 +5,86 @@ import { useRouter } from 'next/navigation';
 import { useLanguage } from '@/context/LanguageContext';
 import { LanguageSwitcher } from '@/components/language-switcher';
 
-const PLANS = [
-  {
-    id: 'FREE',
-    name: 'Free',
-    price: 0,
-    features: ['10 страв', 'QR код', 'Стандартна підтримка'],
-  },
-  {
-    id: 'BASIC',
-    name: 'Base',
-    price: 500,
-    features: ['Безліміт страв', 'Аналітика', 'Власні кольори', 'Пріоритетна підтримка'],
-    popular: true,
-  },
-  {
-    id: 'PRO',
-    name: 'Pro',
-    price: 1000,
-    features: ['Кілька закладів', 'Керування персоналом', 'AI генерація описів', 'Персональний менеджер'],
-  },
-];
-
 export default function BillingPage() {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
   const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
   const router = useRouter();
-  const { tr } = useLanguage();
+  const { tr, language } = useLanguage(); // Додаємо language для визначення валюти
 
-  // В ідеалі ці дані мають приходити з useAuth або окремого запиту
+  // Динамічне визначення валюти та цін
+  const currencyData = {
+    uk: { symbol: '₴', rate: 40, label: 'грн' }, // 1$ = 40 грн (приблизно)
+    pl: { symbol: 'zł', rate: 4, label: 'zł' },  // 1$ = 4 zł
+    en: { symbol: '$', rate: 1, label: 'usd' }
+  }[language as 'uk' | 'pl' | 'en'] || { symbol: '$', rate: 1, label: 'usd' };
+
+  const PLANS = [
+    {
+      id: 'FREE',
+      name: 'Free',
+      usdPrice: 0,
+      features: tr('billing.plans.free.features', { returnObjects: true }) as unknown as string[] || [],
+    },
+    {
+      id: 'BASIC',
+      name: 'Base',
+      usdPrice: 15,
+      features: (tr('billing.plans.base.features', { returnObjects: true }) as unknown as string[]) || [],
+      popular: true,
+    },
+    {
+      id: 'PRO',
+      name: 'Pro',
+      usdPrice: 30,
+      features: tr('billing.plans.pro.features', { returnObjects: true }) as unknown as string[] || [],
+    },
+  ];
+
   const currentSubscription = {
     plan: 'FREE',
     expiresAt: null,
   };
 
-const handleSubscribe = async (planId: string) => {
+  const handleSubscribe = async (planId: string) => {
     if (planId === 'FREE' || planId === currentSubscription.plan) return;
-    
     setLoadingPlan(planId);
     
     try {
-      // Використовуємо fetch з твоїм системним URL
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/payments/subscribe`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          // Не забудь про авторизацію, якщо вона вже прикручена (Bearrer token)
           'Authorization': `Bearer ${localStorage.getItem('token')}` 
         },
         body: JSON.stringify({ 
           plan: planId,
-          cycle: billingCycle 
+          cycle: billingCycle,
+          currency: currencyData.label.toUpperCase() // Передаємо валюту на бекенд
         }),
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to create payment session');
-      }
-
+      if (!response.ok) throw new Error('Failed to create payment session');
       const data = await response.json();
 
-      // Створюємо форму для POST-редиректу
       const form = document.createElement('form');
       form.method = 'POST';
       form.action = 'https://secure.wayforpay.com/pay';
       form.acceptCharset = 'utf-8';
 
-      // Наповнюємо форму даними від бекенда
       Object.entries(data).forEach(([key, value]) => {
         const input = document.createElement('input');
         input.type = 'hidden';
         input.name = key;
-        
-        // WayForPay очікує, що масиви будуть розділені крапкою з комою
-        if (Array.isArray(value)) {
-          input.value = value.join(';');
-        } else {
-          input.value = value?.toString() || '';
-        }
-        
+        input.value = Array.isArray(value) ? value.join(';') : value?.toString() || '';
         form.appendChild(input);
       });
 
       document.body.appendChild(form);
       form.submit();
-      
-      // Форма відправила запит, видаляємо її
       document.body.removeChild(form);
-
     } catch (error) {
       console.error('Payment Error:', error);
-      alert('Сталася помилка при ініціалізації платежу. Спробуйте пізніше.');
+      alert(tr('billing.payment_error'));
     } finally {
       setLoadingPlan(null);
     }
@@ -152,7 +141,10 @@ const handleSubscribe = async (planId: string) => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
         {PLANS.map((plan) => {
           const isCurrent = currentSubscription.plan === plan.id;
-          const price = billingCycle === 'monthly' ? plan.price : Math.round((plan.price * 12) * 0.8);
+          
+          // Розрахунок ціни на основі валюти та циклу
+          const basePrice = plan.usdPrice * currencyData.rate;
+          const finalPrice = billingCycle === 'monthly' ? basePrice : Math.round((basePrice * 12) * 0.8);
 
           return (
             <div key={plan.id} className={`relative p-8 md:p-10 rounded-[3rem] border-2 transition-all duration-500 ${plan.popular ? 'border-black bg-white shadow-2xl md:-mt-4' : 'border-gray-100'}`}>
@@ -161,10 +153,12 @@ const handleSubscribe = async (planId: string) => {
               )}
               <h3 className="text-2xl font-black uppercase italic mb-1 tracking-tighter">{plan.name}</h3>
               <div className="mb-8">
-                <span className="text-5xl font-black italic tracking-tighter">₴{price}</span>
-                <span className="text-gray-400 font-bold text-xs ml-2 uppercase tracking-widest">{billingCycle === 'monthly' ? 'міс' : 'рік'}</span>
+                <span className="text-5xl font-black italic tracking-tighter">{currencyData.symbol}{finalPrice}</span>
+                <span className="text-gray-400 font-bold text-xs ml-2 uppercase tracking-widest">
+                   / {billingCycle === 'monthly' ? tr('billing.period_month') : tr('billing.period_year')}
+                </span>
               </div>
-              <ul className="space-y-5 mb-12">
+              <ul className="space-y-5 mb-12 min-h-[180px]">
                 {plan.features.map((f, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm font-bold text-gray-500">
                     <Check size={18} className="text-black shrink-0" /> <span className="leading-tight">{f}</span>

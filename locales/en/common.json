@@ -60,7 +60,35 @@
     "year": "Year",
     "security": "Payments secured with AES-256 encryption",
     "select_plan": "Select Plan",
-    "best_choice": "Best Choice"
+    "best_choice": "Best Choice",
+    "period_month": "mo",
+    "period_year": "yr",
+    "payment_error": "An error occurred while initializing the payment. Please try again later.",
+    "plans": {
+      "free": {
+        "features": [
+          "Up to 10 dishes",
+          "Digital QR code",
+          "Standard support"
+        ]
+      },
+      "base": {
+        "features": [
+          "Unlimited dishes",
+          "Basic analytics",
+          "Custom colors & branding",
+          "Priority support"
+        ]
+      },
+      "pro": {
+        "features": [
+          "Multiple locations",
+          "Staff management",
+          "AI description generation",
+          "Personal account manager"
+        ]
+      }
+    }
   },
   "dashboard_error": {
     "title": "Failed to load statistics",
