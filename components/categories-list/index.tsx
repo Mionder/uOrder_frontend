@@ -76,7 +76,7 @@ const scrollToCategory = (categoryId: string) => {
                                 {/* Список категорій зі скролом, якщо їх багато */}
                                 <div className="flex overflow-x-auto w-full no-scrollbar gap-6 pb-3 pt-1">
                                 {categories.map((category: any) => {
-                                    const isActive = activeCategoryId === category.slug;
+                                    const isActive = activeCategoryId === category.id;
                                     return (
                                     <button 
                                         key={category.id} 
