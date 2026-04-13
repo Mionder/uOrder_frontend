@@ -112,25 +112,29 @@ export const MenuItem = ({ info, baseColor, currency }: any) => {
                   })}
                 </div>
               )}
-              
-              <div 
-                style={{ color: baseColor }} 
-                className="text-[20px] font-extrabold leading-none tracking-tighter flex items-baseline gap-0.5"
-              >
-                {info.variants?.length > 0 && (
-                  <span className="text-[9px] uppercase font-black text-gray-300 tracking-widest mr-0.5">{tr('menu_item.from')}</span>
-                )}
-                {renderPrice()}
-                <span className="text-[12px] font-black ml-0.5 uppercase">{currencySymbol}</span>
-              </div>
 
-              <button 
-                onClick={handleAddClick}
-                style={{ backgroundColor: baseColor }}
-                className="p-2 rounded-full text-white active:scale-90 transition-transform"
-              >
-                <Plus size={20} />
-              </button>
+              <div className="flex gap-2">
+                <div 
+                  style={{ color: baseColor }} 
+                  className="text-[20px] font-extrabold leading-none tracking-tighter flex items-baseline gap-0.5"
+                >
+                  {info.variants?.length > 0 && (
+                    <span className="text-[9px] uppercase font-black text-gray-300 tracking-widest mr-0.5">{tr('menu_item.from')}</span>
+                  )}
+                  {renderPrice()}
+                  <span className="text-[12px] font-black ml-0.5 uppercase">{currencySymbol}</span>
+                </div>
+
+                <button 
+                  onClick={handleAddClick}
+                  style={{ backgroundColor: baseColor }}
+                  className="p-2 rounded-full text-white active:scale-90 transition-transform"
+                >
+                  <Plus size={20} />
+                </button>
+              </div>
+              
+              
             </div>
 
             {

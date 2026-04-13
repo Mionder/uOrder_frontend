@@ -221,5 +221,10 @@
   "go_to_categories": "Go to categories",
   "navigate": "Navigate to",
   "reg_link": "Don't have an account?",
-  "create_now": "Create it now"
+  "create_now": "Create it now",
+  "cart": {
+    "title": "Your order",
+    "total": "Total",
+    "empty": "Cart is empty"
+  }
 }

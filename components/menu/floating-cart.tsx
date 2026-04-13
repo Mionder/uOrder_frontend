@@ -5,7 +5,7 @@ import { useCart } from "../admin/dashboard/menu/hooks/use-cart";// або де 
 import { X, Minus, Plus, Trash2, ShoppingBag } from "lucide-react";
 
 export const CartModal = ({ isOpen, onClose, tenant }: any) => {
-  const { t } = useLanguage();
+  const { tr, t } = useLanguage();
   const { items, addItem, removeItem, clearCart } = useCart();
   
   const total = items.reduce((acc, item) => acc + (item.price * item.quantity), 0);
@@ -21,7 +21,7 @@ export const CartModal = ({ isOpen, onClose, tenant }: any) => {
       <div className="relative bg-white w-full max-w-lg rounded-t-[40px] p-6 shadow-2xl animate-in slide-in-from-bottom duration-300 max-h-[85vh] flex flex-col">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-black italic tracking-tighter">
-            {t('cart.title') || 'Ваше замовлення'}
+            {tr('cart.title') || 'Ваше замовлення'}
           </h2>
           <button onClick={onClose} className="p-2 bg-gray-100 rounded-full">
             <X size={20} />
@@ -31,7 +31,7 @@ export const CartModal = ({ isOpen, onClose, tenant }: any) => {
         {items.length === 0 ? (
           <div className="py-20 text-center flex flex-col items-center gap-4">
             <ShoppingBag size={48} className="text-gray-200" />
-            <p className="text-gray-400 font-medium">{t('cart.empty') || 'Кошик порожній'}</p>
+            <p className="text-gray-400 font-medium">{tr('cart.empty') || 'Кошик порожній'}</p>
           </div>
         ) : (
           <>
@@ -58,18 +58,11 @@ export const CartModal = ({ isOpen, onClose, tenant }: any) => {
 
             <div className="mt-6 pt-6 border-t border-gray-100">
               <div className="flex justify-between items-end mb-6">
-                <span className="text-gray-400 font-bold uppercase text-xs tracking-widest">Разом</span>
+                <span className="text-gray-400 font-bold uppercase text-xs tracking-widest">{tr('cart.total')}</span>
                 <span className="text-3xl font-black italic tracking-tighter" style={{ color: tenant.mainColor }}>
                   {total} {tenant.currency}
                 </span>
               </div>
-              
-              <button 
-                className="w-full py-5 rounded-2xl font-black text-white text-center shadow-lg active:scale-[0.98] transition-all"
-                style={{ backgroundColor: tenant.mainColor }}
-              >
-                {t('cart.order') || 'Оформити замовлення'}
-              </button>
             </div>
           </>
         )}

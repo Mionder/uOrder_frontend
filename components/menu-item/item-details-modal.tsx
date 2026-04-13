@@ -1,12 +1,25 @@
 'use client';
 import { useLanguage } from "@/context/LanguageContext";
 import { ALLERGENS, SPICINESS_LEVELS } from "@/config/menu-constants";
-import { Flame, X, Scale, Leaf } from "lucide-react";
+import { Flame, X, Scale, Leaf, Plus } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useCart } from "../admin/dashboard/menu/hooks/use-cart";
 
 // Компонент модалки (Bottom Sheet style)
 export const ItemDetailsModal = ({ info, isOpen, onClose, baseColor, currencySymbol }: any) => {
   const { t, tr, language } = useLanguage();
+  const addItem = useCart((state) => state.addItem);
+  
+    const handleAddClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); // щоб не відкривалася модалка при кліку на плюс
+    addItem({
+      id: info.id,
+      name: info.name,
+      price: info.basePrice || Math.min(...info.variants?.map((v: any) => v.price)),
+      quantity: 1
+    });
+  };
+
 const getSpicinessLabel = (id: string) => {
   return SPICINESS_LEVELS.find(item => item.id === id)?.label[language as 'uk' | 'en' | 'pl'] || '';
 };
@@ -35,6 +48,15 @@ const getSpicinessLabel = (id: string) => {
           className="absolute top-5 right-5 z-10 bg-white/80 backdrop-blur-md p-2 rounded-full shadow-lg active:scale-90 transition-transform"
         >
           <X size={20} className="text-black" />
+        </button>
+
+        <button 
+            onClick={handleAddClick}
+            style={{ backgroundColor: baseColor }}
+            
+          className="absolute top-5 left-5 z-10 bg-white/80 backdrop-blur-md p-2 rounded-full shadow-lg active:scale-90 transition-transform"
+        >
+          <Plus size={20} />
         </button>
 
         <div className="overflow-y-auto pb-10">
