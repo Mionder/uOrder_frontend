@@ -54,9 +54,9 @@ const getSpicinessLabel = (id: string) => {
             onClick={handleAddClick}
             style={{ backgroundColor: baseColor }}
             
-          className="absolute top-5 left-5 z-10 bg-white/80 backdrop-blur-md p-2 rounded-full shadow-lg active:scale-90 transition-transform"
+          className="absolute top-5 left-5 z-10 border border-white bg-white/80 backdrop-blur-md p-2 rounded-full shadow-lg active:scale-90 transition-transform"
         >
-          <Plus size={20} />
+          <Plus size={20} className="text-white" />
         </button>
 
         <div className="overflow-y-auto pb-10">
