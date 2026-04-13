@@ -32,6 +32,8 @@ export const MenuItem = ({ info, baseColor, currency }: any) => {
     return CURRENCIES.find(c => c.id === currencyId)?.symbol || '';
   };
 
+  console.log('weight', info);
+
   const currencySymbol = getCurrencySymbol(currency);
 
   return (

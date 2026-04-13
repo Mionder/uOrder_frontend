@@ -68,6 +68,8 @@ export default function TenantSettingsForm({ fetching, setFetching, profile, set
         isActive: profile.isActive // зберігаємо поточний статус
       };
 
+      console.log('updateData_tenant', updateData);
+
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/admin/tenant/settings`, {
         method: 'PATCH',
         headers: {
@@ -149,6 +151,7 @@ export default function TenantSettingsForm({ fetching, setFetching, profile, set
               name="slug"
               defaultValue={profile.slug}
               required
+              disabled
               className="flex-1 block w-full border border-gray-300 rounded-none rounded-r-md p-2 focus:ring-blue-500 focus:border-blue-500"
               placeholder="my-cool-restaurant"
             />
@@ -178,7 +181,7 @@ export default function TenantSettingsForm({ fetching, setFetching, profile, set
                 return (
                     <div key={`desc_key_${lang}`}>
                         <label className="block text-sm font-medium">{tr('tenant_settings.description_label')} ({lang})</label>
-                        <textarea name={`desc_${lang}`} className="w-full border rounded p-2" rows={2} />
+                        <textarea name={`desc_${lang}`} className="w-full border rounded p-2" defaultValue={t(profile.description)} rows={2} />
                     </div>
                 )
             })

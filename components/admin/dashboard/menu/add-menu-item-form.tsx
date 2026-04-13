@@ -86,6 +86,7 @@ export default function CreateMenuItemForm({ categories, setShowCreateModal, slu
         image: url,
         spiciness,
         allergens: selectedAllergens,
+        weight: formData.get('weight'),
         // Якщо є варіанти, basePrice може бути null або ціною першого варіанту
         basePrice: !hasVariants ? Number(formData.get('basePrice')) : null,
         variants: formattedVariants,
