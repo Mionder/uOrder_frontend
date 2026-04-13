@@ -4,6 +4,7 @@ import { Check, Zap, ShieldCheck, Clock, ArrowLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useLanguage } from '@/context/LanguageContext';
 import { LanguageSwitcher } from '@/components/language-switcher';
+import Cookies from 'js-cookie';
 
 export default function BillingPage() {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
@@ -15,6 +16,7 @@ export default function BillingPage() {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const { tr, language } = useLanguage(); // Додаємо language для визначення валюти
+  const token = Cookies.get('token');
 
   // Динамічне визначення валюти та цін
   const currencyData = {
@@ -48,9 +50,9 @@ export default function BillingPage() {
   useEffect(() => {
     const fetchTenantData = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/tenants/me`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/admin/tenant/me`, {
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
+            'Authorization': `Bearer ${token}`
           }
         });
         if (response.ok) {
