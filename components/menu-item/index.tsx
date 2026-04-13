@@ -2,9 +2,10 @@
 import { useLanguage } from "@/context/LanguageContext";
 import { LikeButton } from "../admin/dashboard/menu/like-button";
 import { ALLERGENS } from "@/config/menu-constants";
-import { Flame, Info } from "lucide-react";
+import { Flame, Info, Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 import { ItemDetailsModal } from "./item-details-modal";
+import { useCart } from "../admin/dashboard/menu/hooks/use-cart";
 
 const CURRENCIES = [
   { id: 'UAH', symbol: '₴', label: 'Hryvnia' },
@@ -16,6 +17,17 @@ const CURRENCIES = [
 export const MenuItem = ({ info, baseColor, currency }: any) => {
   const { t, tr } = useLanguage();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const addItem = useCart((state) => state.addItem);
+
+  const handleAddClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); // щоб не відкривалася модалка при кліку на плюс
+    addItem({
+      id: info.id,
+      name: info.name,
+      price: renderPrice(),
+      quantity: 1
+    });
+  };
 
   useEffect(() => {
     if (isModalOpen) document.body.style.overflow = 'hidden';
@@ -111,6 +123,14 @@ export const MenuItem = ({ info, baseColor, currency }: any) => {
                 {renderPrice()}
                 <span className="text-[12px] font-black ml-0.5 uppercase">{currencySymbol}</span>
               </div>
+
+              <button 
+                onClick={handleAddClick}
+                style={{ backgroundColor: baseColor }}
+                className="p-2 rounded-full text-white active:scale-90 transition-transform"
+              >
+                <Plus size={20} />
+              </button>
             </div>
 
             {

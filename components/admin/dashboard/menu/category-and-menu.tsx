@@ -3,10 +3,12 @@ import { MenuItem } from "@/components/menu-item"
 import { CategoryTitle } from "../categories/category-title"
 import { useEffect, useRef, useState } from "react";
 import { CategoriesList } from "@/components/categories-list";
+import { CartModal } from "@/components/menu/floating-cart";
 
 export const CategoryAndMenu = ({ tenant }: any) => {
     const refs = useRef<any>({});
     const [activeCategoryId, setActiveCategoryId] = useState<string | null>(null);
+    const [isCartOpen, setIsCartOpen] = useState(false);
 
     useEffect(() => {
       const hasVisited = sessionStorage.getItem(`v_${tenant.slug}`);
@@ -16,6 +18,11 @@ export const CategoryAndMenu = ({ tenant }: any) => {
         sessionStorage.setItem(`v_${tenant.slug}`, 'true');
       }
     }, [tenant.slug]);
+
+  useEffect(() => {
+    if (isCartOpen) document.body.style.overflow = 'hidden';
+    else document.body.style.overflow = 'unset';
+  }, [isCartOpen]);
 
     useEffect(() => {
     // Створюємо обсервер
@@ -51,8 +58,19 @@ export const CategoryAndMenu = ({ tenant }: any) => {
 
     return (
         <div className="w-full">
-               <CategoriesList categories={tenant.categories} refs={refs} tenant={tenant} activeCategoryId={activeCategoryId} />
-
+               <CategoriesList 
+                  categories={tenant.categories} 
+                  refs={refs} 
+                  tenant={tenant} 
+                  activeCategoryId={activeCategoryId}
+                  isCartOpen={isCartOpen}
+                  setIsCartOpen={setIsCartOpen} 
+                />
+                <CartModal 
+                  isOpen={isCartOpen} 
+                  onClose={() => setIsCartOpen(false)} 
+                  tenant={tenant} 
+                />
                 {tenant.categories.map((category: any) => (
                   <section ref={(el) => {refs.current[category.id] = el}} id={category.slug} key={category.id}>
                     <CategoryTitle color={tenant.mainColor} category={category} /> 
