@@ -72,7 +72,7 @@ export const CategoryAndMenu = ({ tenant }: any) => {
                   tenant={tenant} 
                 />
                 {tenant.categories.map((category: any) => (
-                  <section ref={(el) => {refs.current[category.id] = el}} id={category.slug} key={category.id}>
+                  <section style={{ scrollMarginTop: '120px' }} ref={(el) => {refs.current[category.id] = el}} id={category.id} key={category.id}>
                     <CategoryTitle color={tenant.mainColor} category={category} /> 
                     <div className="space-y-4">
                       {category.items.map((item: any) => (

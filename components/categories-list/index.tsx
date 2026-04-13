@@ -8,6 +8,7 @@ export const CategoriesList = ({ categories, refs, tenant, activeCategoryId, cla
     const { t } = useLanguage();
     const cartItems = useCart(state => state.items);
     
+/*
 const scrollToCategory = (id: string) => {
   const element = document.getElementById(id);
   if (element) {
@@ -19,6 +20,17 @@ const scrollToCategory = (id: string) => {
       top: offsetPosition,
       behavior: "smooth"
     });
+  }
+};
+*/
+
+const scrollToCategory = (categoryId: string) => {
+  const element = refs.current[categoryId]; // Шукаємо саме в refs
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } else {
+    // Якщо refs ще не прокинулись, спробуємо по нативному ID
+    document.getElementById(categoryId)?.scrollIntoView({ behavior: 'smooth' });
   }
 };
 
