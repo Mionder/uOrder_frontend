@@ -113,7 +113,7 @@ export const MenuItem = ({ info, baseColor, currency }: any) => {
                 </div>
               )}
 
-              <div className="flex gap-2">
+              <div className="flex gap-5 items-center">
                 <div 
                   style={{ color: baseColor }} 
                   className="text-[20px] font-extrabold leading-none tracking-tighter flex items-baseline gap-0.5"
