@@ -47,7 +47,7 @@ const scrollToCategory = (categoryId: string) => {
       />
     )}
     <div className="flex flex-col gap-1 items-start">
-      <h1 className="text-2xl font-black italic tracking-tighter leading-none">{tenant.name}</h1>
+      <h1 className="text-2xl font-black text-left italic tracking-tighter leading-none">{tenant.name}</h1>
       <p className="text-gray-500 text-left text-xs max-w-[180px] leading-tight">
         {t(tenant.description)}
       </p>
